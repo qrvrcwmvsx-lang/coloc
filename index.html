@@ -5,167 +5,1090 @@
 <meta name="theme-color" content="#f4f1e9"><title>Карточки · Математический анализ</title>
 <style>
 :root{--paper:#f4f1e9;--ink:#20251f;--muted:#70766d;--line:#d9d8ce;--green:#345c49;--mint:#e5eee6;--gold:#d69d46;--white:#fffefa;--shadow:0 24px 70px #23332416}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.wrap{max-width:960px;margin:auto;padding:34px 24px 48px}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding-bottom:22px}.brand{display:flex;align-items:center;gap:12px}.mark{width:42px;height:42px;border-radius:13px;background:var(--green);color:#fff;display:grid;place-items:center;font:700 20px Georgia}.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}h1{font:500 clamp(22px,3vw,30px)/1.2 Georgia,serif;margin:2px 0 0}.tag{border:1px solid var(--line);border-radius:99px;padding:7px 12px;color:var(--muted);font-size:12px;white-space:nowrap}.intro{display:flex;justify-content:space-between;align-items:end;gap:24px;margin:28px 0 18px}.intro p{margin:5px 0 0;color:var(--muted);max-width:560px}.stats{display:flex;gap:18px;white-space:nowrap}.stat strong{font:500 24px Georgia;display:block}.stat span{font-size:11px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}.toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:24px 0 18px}select,.quiet{font:inherit;color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:10px;padding:10px 13px}select{min-width:200px}.progress{height:4px;background:#dedfd5;border-radius:8px;overflow:hidden;margin-bottom:24px}.progress i{height:100%;display:block;background:var(--gold);width:0;transition:width .25s}.stage{min-height:390px;background:var(--white);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);padding:clamp(24px,5vw,54px);display:flex;flex-direction:column;position:relative}.meta{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:12px;letter-spacing:.06em;text-transform:uppercase}.kind{color:var(--green)}.prompt{font:500 clamp(24px,4vw,38px)/1.28 Georgia,serif;margin:auto 0;text-wrap:pretty;max-width:760px}.answer{display:none;color:#454c44;border-top:1px solid var(--line);padding-top:20px;margin-top:2px;white-space:pre-line}.stage.revealed .answer{display:block}.stage.revealed .prompt{font-size:clamp(21px,3vw,30px);margin:25px 0 18px}.source{font-size:12px;color:var(--muted);margin-top:auto;padding-top:24px}.actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:18px 0}.btn{border:0;border-radius:12px;background:var(--green);color:white;padding:13px 23px;font:600 14px inherit;cursor:pointer;transition:transform .15s,opacity .15s}.btn:hover{transform:translateY(-1px)}.btn.secondary{background:var(--mint);color:var(--green)}.btn:disabled{opacity:.4;cursor:default;transform:none}.hint{text-align:center;color:var(--muted);font-size:12px}.bottom{display:flex;justify-content:space-between;align-items:center;margin-top:30px;color:var(--muted);font-size:12px}.quiet{font-size:12px;padding:7px 10px;cursor:pointer;color:var(--muted)}.empty{margin:auto;text-align:center;color:var(--muted)}@media(max-width:620px){.wrap{padding:22px 16px 32px}.intro{align-items:start;flex-direction:column}.stats{width:100%;justify-content:space-between}.stage{min-height:360px}.tag{display:none}.bottom{gap:10px}.prompt{font-size:27px}}
+
+.panel{border:1px solid var(--line);border-radius:18px;padding:20px;margin:20px 0;background:var(--white)}.panel h2{font:500 24px Georgia;margin:0 0 10px}.legend,.rating,.exam-controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.legend{font-size:13px;color:var(--muted);margin:10px 0}.rate{border:1px solid currentColor;border-radius:9px;padding:9px 12px;background:transparent;font:inherit;font-size:13px;cursor:pointer}.rate.green{color:#24543b;background:#e5f1e8}.rate.blue{color:#245c93;background:#e9f0fb}.rate.red{color:#9c3037;background:#fcebed}.rate[aria-pressed="true"]{outline:3px solid currentColor;outline-offset:2px}.rate.neutral{color:var(--muted)}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:3px}.tickets{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}.ticket-tile{padding:13px;border:1px solid var(--line);border-radius:12px;border-left:5px solid var(--line)}.ticket-tile.green{border-left-color:#24543b}.ticket-tile.blue{border-left-color:#245c93}.ticket-tile.red{border-left-color:#9c3037}.ticket-title{border:0;background:none;color:var(--ink);font:600 16px inherit;cursor:pointer;padding:0}.ticket-tile p{font-size:12px;color:var(--muted);margin:5px 0 10px}.ticket-tile .rate{padding:5px 7px;font-size:12px}.rating{justify-content:center;margin:18px 0}.exam-controls input{width:70px;padding:9px;border:1px solid var(--line);border-radius:9px;font:inherit}.exam-list{padding-left:25px}.exam-list li{margin:16px 0}.exam-list details{margin-top:8px}.exam-list summary{cursor:pointer;color:var(--green)}.exam-list .rating{justify-content:flex-start}.exam-status{font-variant-numeric:tabular-nums;color:var(--green);margin:14px 0}.exam-list p{white-space:pre-line}.notice{font-size:12px;color:var(--muted)}[hidden]{display:none!important}.bottom{flex-wrap:wrap}
+
+.exam-panel{margin:22px 0 28px;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:var(--white)}.exam-welcome{padding:34px 36px;background:var(--green);color:#fffefa;display:flex;gap:24px;justify-content:space-between;align-items:center}.exam-welcome .eyebrow{color:#c3d5c7}.exam-welcome h2{font:500 clamp(38px,6vw,58px)/1.02 Georgia,serif;letter-spacing:-.025em;margin:18px 0}.exam-welcome h2 em{font-weight:400;color:#e8be77}.exam-welcome p{color:#d5e1d6;font-size:15px;line-height:1.7;margin:0}.exam-steps{display:flex;gap:17px;flex-wrap:wrap;color:#c3d5c7;font-size:11px;margin-top:27px}.exam-seal{width:180px;height:180px;flex-shrink:0;border:1px solid #ffffff40;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(9deg);background:#ffffff04;box-shadow:inset 0 0 0 10px #345c49,inset 0 0 0 11px #ffffff20}.exam-seal span,.exam-seal small{font-size:8px;letter-spacing:.12em;color:#c3d5c7}.exam-seal strong{font:400 80px/1.3 Georgia;color:#e8be77}.exam-panel>.exam-controls{padding:22px 30px;justify-content:space-between;gap:20px}.control-label{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:9px}.duration-options{display:flex;gap:6px;align-items:center}.duration-chip{border:1px solid var(--line);border-radius:8px;padding:9px 11px;font:500 12px inherit;background:transparent;color:var(--muted);cursor:pointer}.duration-chip[aria-pressed="true"]{color:var(--green);background:var(--mint);border-color:#adc3b0}.custom-duration{display:flex;align-items:center;border-left:1px solid var(--line);padding-left:10px;margin-left:3px;gap:5px;color:var(--muted);font-size:12px}.custom-duration input{width:56px;padding:8px!important;font-size:12px!important}.exam-panel.running>.exam-controls{border-bottom:1px solid var(--line);padding:16px 30px;justify-content:flex-end}.exam-panel.running #startExam{background:transparent;color:var(--muted);border:1px solid var(--line);font-size:12px;padding:8px 12px;order:2}.exam-panel.running #endExam{border:0;color:var(--green);margin-right:auto}.exam-head{padding:32px;display:flex;justify-content:space-between;align-items:center;gap:24px;background:linear-gradient(120deg,#f8f7ef,#eef3ea)}.exam-head h2{font:500 clamp(38px,5vw,52px)/1.15 Georgia;margin:8px 0}.exam-head p{font:500 17px/1.4 Georgia;max-width:470px;margin:0 0 12px}.exam-count{color:var(--muted);font-size:12px}.timer-card{min-width:165px;max-width:195px;padding:19px 22px;background:var(--white);border:1px solid var(--line);border-radius:16px;text-align:center}.timer-card strong{display:block;font:500 40px/1.15 Georgia;letter-spacing:-.02em;color:var(--green);font-variant-numeric:tabular-nums}.timer-track{height:3px;background:var(--mint);border-radius:6px;margin:13px 0 10px;overflow:hidden}.timer-track i{display:block;height:100%;background:var(--green);transition:width .4s linear}.timer-card #timerCaption{font-size:10px;color:var(--muted)}.timer-card.expired strong{color:#9c3037}.exam-alert{margin:20px 26px 0;padding:14px 18px;border-radius:12px;background:#fbf0df;color:#76551d;font-size:13px}.exam-question-heading{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:28px 30px 18px}.exam-question-heading h3,.exam-verdict h3{font:500 22px Georgia;margin:0}.exam-question-heading span{font-size:11px;color:var(--muted)}.exam-list{list-style:none;padding:0 26px;margin:0;counter-reset:exam-question}.exam-list li{margin:0 0 14px;padding:23px 24px;border:1px solid var(--line);border-radius:16px;counter-increment:exam-question;background:var(--white)}.exam-qmeta{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}.exam-qmeta:before{content:counter(exam-question,decimal-leading-zero);width:28px;height:28px;display:grid;place-items:center;background:var(--mint);color:var(--green);border-radius:8px;font-size:11px;font-weight:600;letter-spacing:0}.exam-list li>strong{font:500 clamp(19px,3vw,24px)/1.35 Georgia;display:block}.exam-list details{margin:17px 0 0;border-top:1px solid #e8e8e0;padding-top:13px}.exam-list summary{font-size:12px;list-style:none;display:flex;justify-content:space-between;align-items:center}.exam-list summary:after{content:'+';font-size:20px;font-weight:400}.exam-list details[open] summary:after{content:'−'}.exam-list details[open] summary{margin-bottom:10px}.exam-list p{font-size:14px;line-height:1.8;margin:0;padding:8px 0}.exam-list .rating{margin:14px 0 0;gap:7px}.exam-list .rate{padding:7px 11px;font-size:11px}.exam-verdict{margin:24px 26px 26px;padding:23px;background:#f2f4ec;border:1px solid var(--line);border-radius:16px;display:flex;align-items:center;justify-content:space-between;gap:20px}.exam-verdict h3{margin:7px 0}.exam-verdict p{font-size:12px;color:var(--muted);margin:0}.exam-verdict .rating{margin:0}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}@media(max-width:620px){.exam-welcome{padding:27px 23px}.exam-seal{width:105px;height:105px}.exam-seal strong{font-size:47px}.exam-seal span,.exam-seal small{font-size:5px;letter-spacing:.04em}.exam-steps{gap:10px;font-size:9px}.exam-panel>.exam-controls{padding:20px}.exam-panel:not(.running) #startExam{width:100%}.exam-head{padding:24px 20px;gap:15px;align-items:flex-start}.exam-head h2{font-size:34px}.exam-head p{font-size:15px}.timer-card{min-width:112px;padding:14px 11px}.timer-card strong{font-size:30px}.timer-card #timerCaption{font-size:9px}.timer-card .control-label{font-size:8px;letter-spacing:.06em}.exam-question-heading{margin:24px 18px 15px;flex-direction:column;gap:5px}.exam-list{padding:0 14px}.exam-list li{padding:20px 18px}.exam-verdict{margin:20px 14px;flex-direction:column;align-items:flex-start;padding:20px}.exam-panel.running>.exam-controls{padding:15px 18px}.exam-head .eyebrow{font-size:9px}.exam-panel .rate{font-size:11px}.exam-welcome-copy{min-width:0}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+.rate.neutral[aria-pressed="true"]{outline:none}.exam-list .rate.neutral{padding:7px 8px;font-size:10px}
+
+.toolbar select{appearance:none;-webkit-appearance:none;padding-right:46px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='m4 6 4 4 4-4' fill='none' stroke='%2370766d' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 18px center;background-size:16px}.toolbar select:focus-visible{outline-width:2px}.wrap{padding-top:max(34px,env(safe-area-inset-top));padding-bottom:max(48px,env(safe-area-inset-bottom))}.toolbar select{max-width:100%}
 </style>
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Коллоквиум">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 </head>
 <body><main class="wrap">
-<header class="top"><div class="brand"><div class="mark">∫</div><div><div class="eyebrow">Коллоквиум · набор 01</div><h1>Математический анализ</h1></div></div><div class="tag">11 билетов · 121 карточка</div></header>
-<section class="intro"><div><div class="eyebrow">Повторяй активно</div><p>Сначала попробуй ответить вслух, затем переверни карточку. Отмечай то, что уже уверенно знаешь.</p></div><div class="stats"><div class="stat"><strong id="knownCount">0</strong><span>знаю</span></div><div class="stat"><strong id="leftCount">0</strong><span>осталось</span></div></div></section>
-<div class="toolbar"><select id="filter" aria-label="Выбрать билет"><option value="all">Все билеты</option></select><button class="quiet" id="reset">Сбросить прогресс</button></div>
+<header class="top"><div class="brand"><div class="mark">∫</div><div><div class="eyebrow">Коллоквиум · набор 01</div><h1>Математический анализ</h1></div></div><div class="tag" id="deckLabel"></div></header>
+<section class="intro"><div><div class="eyebrow">Повторяй активно</div><p>Сначала попробуй ответить вслух, затем переверни карточку. Оценивай вопросы и билеты: уверенно знаю, повторить или сложно.</p></div><div class="stats"><div class="stat"><strong id="knownCount">0</strong><span>знаю</span></div><div class="stat"><strong id="leftCount">0</strong><span>осталось</span></div></div></section>
+<details class="panel"><summary>Мои билеты · оценки и прогресс</summary><div class="legend">Зелёный — знаю · синий — повторить · красный — сложно. Оценка билета задаётся отдельно от вопросов.</div><div class="tickets" id="tickets"></div></details>
+<section class="exam-panel" id="examPanel">
+<div class="exam-welcome" id="examWelcome"><div class="exam-welcome-copy"><div class="eyebrow">Репетиция устного ответа</div><h2>Твой следующий<br><em>билет.</em></h2><p>Оставь подсказки в стороне.<br>Вытяни билет и расскажи то, что знаешь.</p><div class="exam-steps"><span>01 · Подготовься</span><span>02 · Расскажи</span><span>03 · Проверь себя</span></div></div><div class="exam-seal" aria-hidden="true"><span>МАТЕМАТИЧЕСКИЙ АНАЛИЗ</span><strong>∫</strong><small>УСТНЫЙ КОЛЛОКВИУМ</small></div></div>
+<div class="exam-controls"><div class="duration-setup" id="durationSetup"><span class="control-label">Время на подготовку</span><div class="duration-options"><button class="duration-chip" data-minutes="5" aria-pressed="false">5 мин</button><button class="duration-chip" data-minutes="15" aria-pressed="true">15 мин</button><button class="duration-chip" data-minutes="30" aria-pressed="false">30 мин</button><label class="custom-duration"><input id="minutes" aria-label="Минуты на подготовку" type="number" min="1" max="120" value="15" required><span>мин</span></label></div></div><button class="btn" id="startExam">Вытянуть билет ↗</button><button class="quiet" id="endExam" hidden>Завершить репетицию</button></div>
+<div id="exam" hidden><div class="exam-head"><div><div class="eyebrow">Твой билет</div><h2 id="examTitle"></h2><p id="examTopic"></p><div class="exam-count" id="examCount"></div></div><div class="timer-card"><span class="control-label" id="timerLabel">На подготовку</span><strong id="examClock">15:00</strong><div class="timer-track"><i id="timerBar"></i></div><span id="timerCaption">Расскажи ответы вслух</span></div></div><div class="exam-status sr-only" id="examStatus" role="status" aria-live="off"></div><p id="examAlert" class="exam-alert" role="status" hidden>Время на подготовку вышло. Заверши рассказ и сверь ответы — без спешки.</p><div class="exam-question-heading"><h3>Вопросы билета</h3><span>Ответы открываются по одному</span></div><ol id="examQuestions" class="exam-list"></ol><div class="exam-verdict"><div><div class="eyebrow">После ответа</div><h3>Как прошёл этот билет?</h3><p>Оцени общее впечатление от своего рассказа.</p></div><div id="examTicketRating" class="rating"></div></div></div>
+</section>
+<div id="study">
+<div class="toolbar"><select id="filter" aria-label="Выбрать билет"><option value="all">Все билеты</option></select><select id="ratingFilter" aria-label="Оценка вопроса"><option value="pending">Нужно выучить</option><option value="all">Все вопросы</option><option value="green">Знаю</option><option value="blue">Повторить</option><option value="red">Сложно</option><option value="none">Без оценки</option></select><button class="quiet" id="reset">Сбросить оценки</button></div>
 <div class="progress"><i id="bar"></i></div>
 <section class="stage" id="stage" aria-live="polite"><div class="meta"><span id="ticket"></span><span class="kind" id="kind"></span></div><h2 class="prompt" id="question"></h2><div class="answer" id="answer"></div><div class="source" id="source"></div></section>
-<nav class="actions"><button class="btn secondary" id="again">↺　Повторить</button><button class="btn" id="flip">Показать ответ　↵</button><button class="btn secondary" id="know">Знаю　✓</button></nav><div class="hint">Клавиши: пробел — ответ · ← → — карточка</div>
-<footer class="bottom"><span id="position"></span><span>Источник: конспект к коллоквиуму</span></footer>
+<nav class="actions"><button class="btn secondary" id="prev">← Назад</button><button class="btn" id="flip">Показать ответ</button><button class="btn secondary" id="again">Дальше →</button></nav><div id="cardRating" class="rating" aria-label="Оценка вопроса"></div><div class="hint">Пробел — ответ · ← → — карточка · 1 / 2 / 3 — знаю / повторить / сложно</div>
+</div><p id="storageNotice" class="notice" role="status"></p>
+<footer class="bottom"><span id="position"></span><span>Оценки сохраняются в этом браузере · <a href="https://github.com/qrvrcwmvsx-lang/coloc/blob/main/AUDIT.md">Проверка карточек</a></span></footer>
 </main>
 <script>
 const cards=[
-{t:1,k:'Определение',q:'Что означает A ⊆ B? Когда множества равны?',a:'A ⊆ B, если каждый элемент A принадлежит B. Равенство A = B эквивалентно двум включениям: A ⊆ B и B ⊆ A.',p:2},
-{t:1,k:'Теорема',q:'Сформулируй законы де Моргана для семейств множеств.',a:'Дополнение объединения равно пересечению дополнений: (⋃ᵢ Aᵢ)ᶜ = ⋂ᵢ Aᵢᶜ. Дополнение пересечения равно объединению дополнений: (⋂ᵢ Aᵢ)ᶜ = ⋃ᵢ Aᵢᶜ. Доказательство сводится к отрицанию кванторов принадлежности.',p:3},
-{t:1,k:'Парадокс',q:'В чём состоит парадокс Рассела?',a:'Рассмотрим R = {X : X ∉ X}, множество всех множеств, не содержащих себя. Тогда R ∈ R ⇔ R ∉ R — противоречие. Это показывает проблему наивной теории множеств.',p:4,active:false},
-{t:2,k:'Определение',q:'Что такое декартово произведение и отношение?',a:'A × B — множество упорядоченных пар (a,b), где a∈A, b∈B. Отношение между A и B — любое подмножество R ⊆ A × B.',p:5,active:false},
-{t:2,k:'Определение',q:'Когда отношение является отображением f:A→B?',a:'Если каждому a∈A поставлен в соответствие ровно один элемент b∈B. Образ f(A) состоит из значений f(a), а прообраз f⁻¹(C) — из тех a, чьи значения попали в C. Прообраз существует и без обратной функции.',p:6},
-{t:2,k:'Понятие',q:'Чем инъекция отличается от сюръекции?',a:'Инъекция: разные элементы области имеют разные образы. Сюръекция: каждый элемент B является образом хотя бы одного a∈A. Биекция одновременно инъективна и сюръективна; у неё есть обратное отображение.',p:6},
-{t:3,k:'Определение',q:'Назови свойства частичного порядка.',a:'Рефлексивность: a≤a. Транзитивность: из a≤b и b≤c следует a≤c. Антисимметричность: из a≤b и b≤a следует a=b. Линейный порядок дополнительно сравнивает любую пару элементов.',p:8},
-{t:3,k:'Различие',q:'Максимальный элемент и наибольший элемент — одно и то же?',a:'Нет. Наибольший элемент не меньше любого элемента множества. Максимальный элемент лишь не имеет строго большего элемента внутри множества. Например, {{1},{2}} с порядком включения имеет два максимальных элемента, но не имеет наибольшего.',p:9},
-{t:3,k:'Теорема',q:'Что утверждает лемма Цорна?',a:'Если в частично упорядоченном непустом множестве каждая цепь имеет верхнюю грань, то существует максимальный элемент. Максимальный элемент не обязательно наибольший. Лемма эквивалентна аксиоме выбора.',p:10},
-{t:4,k:'Определение',q:'Что значит, что s = sup A?',a:'s — верхняя грань A, и сколь угодно близко к s снизу найдётся элемент A: для любого ε>0 существует x∈A такой, что s−ε<x≤s. Нужны непустота A и ограниченность сверху.',p:11},
-{t:4,k:'Теорема',q:'Сформулируй аксиому полноты (непрерывности) ℝ.',a:'Если X,Y непусты и каждый x∈X не превосходит каждый y∈Y, то существует c∈ℝ, разделяющий их: x≤c≤y для всех x∈X,y∈Y. Это свойство эквивалентно существованию точной верхней грани у всякого непустого ограниченного сверху множества.',p:12},
-{t:4,k:'Проверь себя',q:'Почему в теореме о sup важны непустота и ограниченность?',a:'Пустое множество не задаёт требуемую точную верхнюю грань в стандартной постановке, а неограниченное сверху множество не имеет конечной верхней грани в ℝ. Оба условия необходимы.',p:12},
-{t:5,k:'Определение',q:'Что значит, что A ⊆ ℝ правоиндуктивно?',a:'Если x∈A, то x+1∈A. Левоиндуктивность определяется аналогично: x∈A влечёт x−1∈A. Минимальную правоиндуктивную лестницу из x получают пересечением всех правоиндуктивных множеств, содержащих x.',p:14},
-{t:5,k:'Доказательство',q:'Почему непустое правоиндуктивное A ⊆ ℝ не ограничено сверху?',a:'Предположим, что s=sup A. Тогда s−1 не верхняя грань, значит найдётся y∈A с y>s−1. По правоиндуктивности y+1∈A, но y+1>s — противоречие.',p:15},
-{t:6,k:'Факт',q:'Какое соглашение о натуральных числах принято в конспекте?',a:'ℕ = {1,2,3,…}. Между соседними целыми n и n+1 нет целого числа; это свойство дискретности. Не смешивай принятое здесь соглашение с курсами, где 0 включают в ℕ.',p:17},
-{t:6,k:'Теорема',q:'Что верно о непустом ограниченном подмножестве ℤ?',a:'Оно имеет наибольший элемент, если ограничено сверху, и наименьший, если ограничено снизу. Также ℤ замкнуто относительно сложения, вычитания и умножения.',p:18},
-{t:7,k:'Определение',q:'Что такое целая часть [x]?',a:'[x] = max{n∈ℤ : n≤x}; поэтому [x]≤x<[x]+1. Для любого h>0 единственное целое n удовлетворяет (n−1)h≤x<nh.',p:20},
-{t:7,k:'Теорема',q:'Сформулируй архимедово свойство ℝ.',a:'Для любых a>0 и b∈ℝ найдётся n∈ℕ такое, что na>b. Следствие: рациональные числа всюду плотны — между любыми a<b есть рациональное число.',p:21},
-{t:7,k:'Метод',q:'Как доказывается плотность ℚ в ℝ через архимедово свойство?',a:'Выбрать n так, чтобы 1/n<b−a. Затем подобрать целое m, попадающее в увеличенный на n интервал (na,nb); тогда a<m/n<b.',p:21},
-{t:7,k:'Метод',q:'Что такое сильная индукция?',a:'Чтобы доказать утверждение для всех n, предполагают его верность для всех меньших значений и выводят случай n. Часто доказательство начинают с наименьшего контрпримера, существование которого противоречит хорошей упорядоченности ℕ.',p:22,active:false},
-{t:8,k:'Определение',q:'Когда множество называется конечным?',a:'Если оно пусто или существует биекция с Dₙ={1,…,n} для некоторого n∈ℕ. Число n называется мощностью множества; оно определяется однозначно.',p:23},
-{t:8,k:'Следствие',q:'Что можно сказать о подмножестве конечного множества?',a:'Оно конечно, и его мощность не превосходит мощности исходного множества. Объединение конечного числа конечных множеств также конечно.',p:24},
-{t:8,k:'Формула',q:'Формула мощности объединения двух конечных множеств?',a:'|A∪B| = |A|+|B|−|A∩B|. Если A и B не пересекаются, то |A∪B|=|A|+|B|.',p:25},
-{t:9,k:'Неравенство',q:'Сформулируй неравенство Бернулли.',a:'При x>−1 и n∈ℕ: (1+x)ⁿ ≥ 1+nx. Равенство имеет место при x=0 или n=1; в остальных случаях неравенство строгое.',p:26},
-{t:9,k:'Формула',q:'Сформулируй биномиальную формулу Ньютона.',a:'(a+b)ⁿ = Σₖ₌₀ⁿ Cₙᵏ aⁿ⁻ᵏbᵏ, где Cₙᵏ=n!/(k!(n−k)!). Коэффициенты удовлетворяют формуле Паскаля Cₙᵏ=Cₙ₋₁ᵏ+Cₙ₋₁ᵏ⁻¹.',p:27},
-{t:9,k:'Идея доказательства',q:'Как доказывают формулу Ньютона индукцией?',a:'База n=0 или n=1 очевидна. Умножают разложение для n на (a+b), группируют соседние слагаемые и применяют формулу Паскаля, получая коэффициенты для n+1.',p:27},
-{t:10,k:'Определение',q:'Что такое модуль и расстояние на числовой прямой?',a:'|x| — расстояние от x до нуля. Расстояние между x и y: ρ(x,y)=|x−y|. Оно неотрицательно, симметрично, равно нулю только при x=y и удовлетворяет неравенству треугольника.',p:28},
-{t:10,k:'Формулы',q:'Запиши неравенства треугольника и окрестность точки.',a:'|x+y|≤|x|+|y|; обратное неравенство: ||x|−|y||≤|x−y|. Окрестность Uᵣ(a)={x:|x−a|<r}=(a−r,a+r).',p:29},
-{t:11,k:'Определение',q:'Что такое симметрическая разность A△B?',a:'A△B=(A\\B)∪(B\\A)=(A∪B)\\(A∩B): множество точек, принадлежащих ровно одному из множеств.',p:31},
-{t:11,k:'Оценка',q:'Как оценивается изменение объединения или пересечения?',a:'Изменение результата содержится в объединении изменений входов: например, (A∪B)△(C∪D) ⊆ (A△C)∪(B△D). Также A△C ⊆ (A△B)∪(B△C).',p:32,active:false},
-{t:11,k:'Определение',q:'Как задаётся длина элементарного множества?',a:'Элементарное множество — конечное объединение ограниченных интервалов. Разбивают его на непересекающиеся интервалы и складывают длины b−a; общая длина не зависит от разбиения. Длина одноточечного множества и пустого множества равна нулю.',p:34},
-{t:11,k:'Свойства',q:'Назови свойства длины элементарных множеств.',a:'Длина неотрицательна и монотонна; длина объединения непересекающихся множеств равна сумме длин. |A∪B|=|A|+|B|−|A∩B|.',p:37,active:false},
-{t:12,k:'Теорема',q:'Сформулируй лемму Кантора о вложенных отрезках.',a:'Если I₁⊇I₂⊇… — непустые замкнутые ограниченные отрезки, то их пересечение непусто. Если длины отрезков стремятся к нулю, пересечение состоит ровно из одной точки.',p:39},
-{t:12,k:'Доказательство',q:'Как найти общую точку вложенных отрезков?',a:'Пусть Iₙ=[aₙ,bₙ], и c=sup{aₙ}. Вложенность показывает, что каждый bₙ — верхняя грань всех левых концов, поэтому aₙ≤c≤bₙ для каждого n. Значит, c принадлежит всем отрезкам.',p:40},
-{t:12,k:'Уточнение',q:'Почему при длинах, стремящихся к нулю, общая точка единственна?',a:'Если бы общих точек было две, между ними было бы фиксированное расстояние δ>0. Но достаточно поздний отрезок имеет длину меньше δ и не может содержать обе точки.',p:40},
-{t:13,k:'Определение',q:'Что значит, что множество открыто?',a:'Множество открыто, если каждая его точка имеет окрестность, целиком лежащую в этом множестве. Дополнение открытого множества называется замкнутым; эквивалентно, множество замкнуто тогда и только тогда, когда его дополнение открыто.',p:42},
-{t:13,k:'Свойства',q:'Какие объединения и пересечения открытых множеств открыты?',a:'Произвольное объединение открытых множеств открыто; конечное пересечение открытых множеств открыто. Бесконечное пересечение может не быть открытым: ⋂ₙ(−1/n,1/n)={0}. Для замкнутых множеств действует двойственное правило.',p:43},
-{t:13,k:'Теорема',q:'Сформулируй теорему Бореля—Лебега.',a:'Из любого открытого покрытия замкнутого ограниченного отрезка можно выбрать конечное подпокрытие.',p:44},
-{t:13,k:'Идея доказательства',q:'Как устроено доказательство Бореля—Лебега делением пополам?',a:'Предположить, что конечного подпокрытия нет. Делить отрезок пополам и каждый раз выбирать половину без конечного подпокрытия. Получить вложенные отрезки с общей точкой c. Элемент покрытия, содержащий c, содержит окрестность c; достаточно короткий выбранный отрезок целиком в ней — противоречие.',p:45},
-{t:1,k:'Термин',q:'Что такое универсум E в задаче?',a:'Это множество объектов, которые рассматриваются именно в данной задаче. Например, при решении неравенства на прямой обычно берут E=ℝ. Это не «множество вообще всех объектов».',p:2},
-{t:1,k:'Термин',q:'Чем отличаются принадлежность и включение?',a:'a∈A говорит об элементе и множестве. A⊆B сравнивает два множества и означает, что каждый элемент A лежит в B.',p:2},
-{t:1,k:'Определение',q:'Что такое дополнение множества A?',a:'Дополнение относительно выбранного универсума E — это E\\A, то есть элементы E, не принадлежащие A. Без универсума понятие дополнения не определено однозначно.',p:3},
-{t:1,k:'Понятие',q:'Что означает ∪ семейства множеств? А ∩?',a:'x∈⋃ᵢXᵢ тогда и только тогда, когда x принадлежит хотя бы одному Xᵢ. x∈⋂ᵢXᵢ тогда и только тогда, когда x принадлежит каждому Xᵢ.',p:3},
-{t:1,k:'Логика',q:'Как отрицать утверждения с кванторами ∀ и ∃?',a:'¬∀x P(x) равносильно ∃x¬P(x). ¬∃x P(x) равносильно ∀x¬P(x). Эта замена лежит в основе доказательства законов де Моргана.',p:2},
-{t:1,k:'Доказательство',q:'Как доказать равенство двух множеств?',a:'Пусть x произвольный. Докажи эквивалентность x∈A ⇔ x∈B. Эквивалентный способ — отдельно показать A⊆B и B⊆A.',p:2},
-{t:1,k:'Аксиомы',q:'Какие операции построения множеств перечислены в конспекте?',a:'Подмножество множества является множеством; все подмножества A образуют множество P(A); можно выделить в множестве элементы с заданным свойством; объединение семейства множеств, являющегося множеством, тоже является множеством.',p:2,active:false},
-{t:1,k:'Проверь себя',q:'Если A={1,2,3}, B={3,4}, чему равны A∩B, A∪B и A\\B?',a:'A∩B={3}; A∪B={1,2,3,4}; A\\B={1,2}. В объединении «или» включающее: элемент может лежать в обоих множествах.',p:3},
-{t:1,k:'Доказательство',q:'Как доказать первое равенство де Моргана через принадлежность?',a:'Для любого x: x∉⋃ᵢXᵢ ⇔ x не принадлежит ни одному Xᵢ ⇔ для всех i, x∉Xᵢ ⇔ x∈⋂ᵢ(E\\Xᵢ). Значит, дополнения множеств совпадают.',p:3},
-{t:1,k:'Доказательство',q:'Как доказать второе равенство де Моргана через принадлежность?',a:'Для любого x: x∉⋂ᵢXᵢ ⇔ неверно, что x принадлежит каждому Xᵢ ⇔ существует i, для которого x∉Xᵢ ⇔ x∈⋃ᵢ(E\\Xᵢ).',p:4},
-{t:2,k:'Определение',q:'Когда две упорядоченные пары равны?',a:'(a,b)=(c,d) тогда и только тогда, когда a=c и b=d. Порядок координат важен.',p:5},
-{t:2,k:'Свойство',q:'Когда декартово произведение A×B пусто?',a:'Если хотя бы один множитель пуст, A×B=∅. Если оба множителя непусты, можно выбрать по элементу и получить пару из произведения.',p:5,active:false},
-{t:2,k:'Термин',q:'Что такое область определения и множество значений отношения R⊆A×B?',a:'Область определения — первые координаты пар из R, она содержится в A. Множество значений — вторые координаты, оно содержится в B. Равенство A и области определения или B и значений не обязательно.',p:5},
-{t:2,k:'Различие',q:'Чем множество значений f(A) отличается от множества, в которое отображает f:A→B?',a:'B — весь кодомен, объявленный в отображении; f(A) — фактически достигнутые значения, поэтому f(A)⊆B и включение может быть строгим.',p:6},
-{t:2,k:'Определение',q:'Как определить график отображения f:A→B?',a:'Γ_f={(a,f(a)):a∈A} — подмножество A×B, состоящее из входа и соответствующего ему выхода.',p:6},
-{t:2,k:'Различие',q:'Почему f⁻¹(D) не обязательно означает обратное отображение?',a:'Прообраз D⊆B определён для любого отображения: это {x∈A:f(x)∈D}. Обратная функция существует только у биекции. Прообраз точки может содержать несколько элементов или быть пустым.',p:6},
-{t:2,k:'Пример',q:'Для f(x)=x² на ℝ найди прообразы {4} и {−1}.',a:'f⁻¹({4})={−2,2}; f⁻¹({−1})=∅, потому что квадрат действительного числа неотрицателен.',p:6},
-{t:2,k:'Определение',q:'Что значит, что отображение инъективно?',a:'Если f(a)=f(a′), то a=a′. Эквивалентно: разные входы имеют разные образы.',p:6},
-{t:2,k:'Определение',q:'Что значит, что отображение сюръективно?',a:'f:A→B сюръективно, если для каждого b∈B найдётся a∈A с f(a)=b; то есть f(A)=B.',p:6},
-{t:2,k:'Следствие',q:'Что верно для обратного отображения биекции?',a:'Если f:A→B биективно, обратное f⁻¹:B→A тоже биективно, и f⁻¹(f(a))=a, f(f⁻¹(b))=b.',p:6},
-{t:2,k:'Понятие',q:'Что представляет собой произведение семейства множеств?',a:'Это множество функций выбора x, заданных на множестве индексов I, для которых x(α)∈Xα для каждого α. Элемент произведения выбирает по одной координате из каждого множества.',p:7,active:false},
-{t:2,k:'Связь',q:'Как подмножество I кодируют характеристической функцией?',a:'Для B⊆I функция χ_B:I→{0,1} равна 1 на B и 0 вне B. Так подмножества I взаимно однозначно соответствуют функциям I→{0,1}.',p:7,active:false},
-{t:3,k:'Пример',q:'Почему включение на P({1,2}) задаёт частичный, но не линейный порядок?',a:'Включение рефлексивно, транзитивно и антисимметрично. Но {1} и {2} несравнимы: ни одно из этих множеств не содержится в другом.',p:8,active:false},
-{t:3,k:'Определение',q:'Что значит, что два элемента частичного порядка сравнимы?',a:'a и b сравнимы, если a≤b или b≤a. Линейный порядок требует сравнимости любых двух элементов.',p:8},
-{t:3,k:'Определение',q:'Чем минимальный элемент отличается от наименьшего?',a:'Минимальный элемент не имеет строго меньшего элемента множества. Наименьший элемент сам не превосходит ни одного элемента. В частичном порядке минимальных может быть несколько, а наименьший, если есть, единственен.',p:9},
-{t:3,k:'Определение',q:'Что такое верхняя грань множества X?',a:'Элемент u окружающего упорядоченного множества, для которого x≤u при каждом x∈X. Верхняя грань не обязана принадлежать X.',p:9},
-{t:3,k:'Различие',q:'Чем sup X отличается от максимума X?',a:'sup X — наименьшая из верхних граней и может не принадлежать X. Максимум обязан лежать в X. Например, у (0,1) супремум 1, но максимума нет.',p:9},
-{t:3,k:'Определение',q:'Что такое цепь в частично упорядоченном множестве?',a:'Подмножество, на котором любые два элемента сравнимы; иначе говоря, цепь сама линейно упорядочена.',p:10},
-{t:3,k:'Определение',q:'Что значит, что порядок вполне упорядочен?',a:'Линейно упорядоченное множество вполне упорядочено, если каждое его непустое подмножество имеет наименьший элемент.',p:9},
-{t:3,k:'Примеры',q:'Какие из ℕ, ℤ и [0,1] вполне упорядочены обычным порядком?',a:'ℕ вполне упорядовано. ℤ — нет: у самого ℤ нет наименьшего элемента. [0,1] — нет: подмножество (0,1) не имеет наименьшего элемента.',p:9},
-{t:3,k:'Теорема',q:'Что утверждает теорема Цермело?',a:'На любом множестве можно задать линейный порядок, относительно которого множество становится вполне упорядоченным. Она не утверждает, что привычный порядок на ℝ вполне упорядочен.',p:9,active:false},
-{t:3,k:'Сопоставление',q:'Сравни принципы Цермело, Куратовского и лемму Цорна.',a:'Цермело: на множестве есть вполне упорядочение. Куратовский: всякая цепь содержится в максимальной цепи. Цорн: если всякая цепь имеет верхнюю грань, есть максимальный элемент. В конспекте они перечислены как эквивалентные формы аксиомы выбора.',p:9,active:false},
-{t:3,k:'Определение',q:'Что такое аксиома выбора?',a:'Для любого семейства непустых множеств существует функция, выбирающая из каждого множества по одному элементу. Эквивалентная формулировка: произведение непустых множителей непусто.',p:9},
-{t:4,k:'Определение',q:'Какие алгебраические и порядковые свойства имеет ℝ в формулировке конспекта?',a:'ℝ — упорядоченное поле: сложение, умножение и порядок согласованы с обычными правилами поля и порядковой совместимостью. К этим свойствам добавляется аксиома полноты, отличающая ℝ от ℚ.',p:11},
-{t:4,k:'Формулировка',q:'В чём принцип непрерывности (разделения) для ℝ?',a:'Если X,Y непусты и x≤y для всех x∈X,y∈Y, найдётся c∈ℝ такое, что x≤c≤y для всех x,y. Точка c разделяет два упорядоченных класса.',p:12},
-{t:4,k:'Критерий',q:'Запиши критерий супремума через ε.',a:'s=sup X тогда и только тогда, когда s — верхняя грань X и для каждого ε>0 найдётся x∈X с s−ε<x. Значит, к s можно приблизиться снизу сколь угодно близко.',p:12},
-{t:4,k:'Следствие',q:'Что гарантирует полнота о непустом ограниченном множестве?',a:'У всякого непустого множества, ограниченного сверху, существует единственный конечный супремум; если оно ограничено снизу, существует единственный конечный инфимум.',p:12},
-{t:4,k:'Пример',q:'Есть ли максимум у множества {x∈ℝ:0<x<1}? Чему равен sup?',a:'Максимума нет: 1 не принадлежит множеству, а любой его элемент можно увеличить, оставаясь меньше 1. Супремум равен 1.',p:12},
-{t:5,k:'Примеры',q:'Приведи примеры право-, лево- и двусторонне-индуктивных множеств.',a:'[0,+∞) право-индуктивно; (−∞,0] лево-индуктивно; ℤ двусторонне-индуктивно. Пустое множество формально удовлетворяет обоим условиям, поскольку в нём нет элемента, нарушающего импликацию.',p:14},
-{t:5,k:'Свойство',q:'Что делает с типом индуктивности сдвиг множества?',a:'Сдвиг x+A сохраняет тип: если A право-индуктивно, то x+A тоже право-индуктивно; аналогично для лево- и двусторонней индуктивности.',p:15},
-{t:5,k:'Свойство',q:'Как отражение A↦−A меняет индуктивность?',a:'Отражение меняет правоиндуктивность на левоиндуктивность и наоборот; двусторонняя индуктивность сохраняется.',p:15},
-{t:5,k:'Свойство',q:'Сохраняют ли объединение и пересечение индуктивность одного типа?',a:'Да. Объединение и пересечение семейств право-индуктивных множеств право-индуктивны; аналогично для лево- и двусторонней индуктивности.',p:15},
-{t:5,k:'Определение',q:'Как задают минимальное правоиндуктивное множество, содержащее x?',a:'ℤ₊(x) — пересечение всех право-индуктивных множеств, содержащих x. Оно само право-индуктивно и содержится в любом другом таком множестве.',p:16},
-{t:5,k:'Свойство',q:'Сформулируй минимальность ℤ₊(x).',a:'Если A право-индуктивно и x∈A, то ℤ₊(x)⊆A. Это напрямую следует из определения как пересечения всех подходящих множеств.',p:16},
-{t:5,k:'Теорема',q:'Как формулируется симметричный результат для левоиндуктивных множеств?',a:'Непустое левоиндуктивное множество не ограничено снизу. Доказательство зеркально доказательству для правоиндуктивного множества.',p:16},
-{t:6,k:'Определение',q:'Как связаны натуральные числа и правоиндуктивность в конспекте?',a:'ℕ — минимальное право-индуктивное подмножество ℝ, содержащее 1; принято соглашение ℕ={1,2,3,…}.',p:17},
-{t:6,k:'Факт',q:'Есть ли целое число строго между n и n+1?',a:'Нет. Соседние целые разделены единичным шагом; это дискретность ℤ.',p:17},
-{t:6,k:'Следствие',q:'Что даёт ограниченность целочисленного множества сверху?',a:'Непустое A⊆ℤ, ограниченное сверху, имеет максимум. В частности, для целых чисел конечна возможность подниматься единичными шагами до заданной верхней границы.',p:18},
-{t:6,k:'Доказательство',q:'Как доказывают существование максимума у ограниченного сверху A⊆ℤ?',a:'Выбрать целую верхнюю грань N. Множество N−A состоит из целых неотрицательных чисел и непусто; у него есть наименьший элемент по дискретности/хорошей упорядоченности. Соответствующий элемент A и будет максимальным.',p:18},
-{t:6,k:'Свойство',q:'Какие арифметические операции замкнуты на ℤ?',a:'Сумма, разность и произведение целых чисел снова целые. Это выводится из построения целых через единичные шаги.',p:18},
-{t:6,k:'Принцип',q:'Как работает доказательство от наименьшего контрпримера?',a:'Если множество контрпримеров — непустое подмножество ℕ, у него есть наименьший элемент. Затем показывают, что этот контрпример породил бы меньший, либо что он не может быть контрпримером; получается противоречие.',p:19},
-{t:7,k:'Теорема',q:'Сформулируй принцип Архимеда в форме единичного шага h.',a:'Для любого x∈ℝ и h>0 существует единственное n∈ℤ, такое что (n−1)h≤x<nh. Интервалы этой сетки разбивают прямую без пропусков и наложений.',p:20},
-{t:7,k:'Следствие',q:'Как из формулы целой части получается разложение x на целую и дробную части?',a:'Существует единственное n=[x]∈ℤ с n≤x<n+1. Поэтому x=[x]+r, где 0≤r<1.',p:20},
-{t:7,k:'Доказательство',q:'Как доказывают обычную архимедову формулировку na>b?',a:'Предполагают, что {na:n∈ℕ} ограничено сверху, берут его супремум s. По свойству супремума найдётся m с ma>s−a; тогда (m+1)a>s, противоречие. Значит, множество не ограничено сверху.',p:21},
-{t:7,k:'Следствие',q:'Почему между любыми двумя разными вещественными числами есть рациональное?',a:'Для a<b выбери n∈ℕ так, чтобы 1/n<b−a. Затем возьми целое m, первое строго большее na. Тогда na<m≤na+1<nb, следовательно, a<m/n<b.',p:21,active:false},
-{t:7,k:'Следствие',q:'Почему в любом интервале (a,b) бесконечно много рациональных?',a:'Для любого N выбери n так, чтобы n(b−a)>N+1. Пусть m — наименьшее целое, строго большее na. Тогда na<m≤na+1, и числа m/n,(m+1)/n,…,(m+N)/n различны и лежат в (a,b).',p:22},
-{t:7,k:'Индукция',q:'Сформулируй математическую индукцию при ℕ={1,2,…}.',a:'Если 1∈A и из n∈A следует n+1∈A, то A=ℕ. В формулировке для утверждения доказывают базу n=1 и переход n⇒n+1.',p:22},
-{t:7,k:'Индукция',q:'Почему принцип индукции следует из минимальности ℕ?',a:'Множество A, содержащее 1 и замкнутое относительно шага n↦n+1, право-индуктивно. По минимальности ℕ оно содержит ℕ; поскольку A⊆ℕ, получаем A=ℕ.',p:22},
-{t:7,k:'Сравнение',q:'Чем сильная индукция отличается от обычной?',a:'В сильном переходе для n предполагают утверждение для всех меньших натуральных чисел, а не только для n−1. Метод наименьшего контрпримера часто доказывает именно такую форму.',p:22},
-{t:7,k:'Обобщение',q:'Что такое трансфинитная индукция?',a:'Обобщение индукции на вполне упорядоченные множества: чтобы доказать P(α), предполагают P(β) для всех β<α и выводят P(α), проверив начальные случаи.',p:22},
-{t:8,k:'Определение',q:'Что такое стандартное множество Dₙ?',a:'Dₙ={1,…,n}; D₀ иногда используют как пустое множество в доказательствах. Конечность означает существование биекции с некоторым Dₙ.',p:23},
-{t:8,k:'Теорема',q:'Почему мощность конечного множества определена однозначно?',a:'Если есть биекции множества с Dₘ и Dₙ, то Dₘ и Dₙ равномощны. Индукцией по меньшему индексу показывают, что это возможно только при m=n.',p:23},
-{t:8,k:'Следствие',q:'Что верно о конечном подмножестве конечного множества A?',a:'Подмножество B⊆A конечно и |B|≤|A|. Если B строго меньше A, то |B|<|A|.',p:24},
-{t:8,k:'Теорема',q:'Почему ограниченное сверху подмножество ℕ конечно?',a:'Если B⊆ℕ ограничено сверху числом M, то каждый его элемент не больше некоторого натурального N≥M. Следовательно, B⊆{1,…,N}, а подмножество конечного множества конечно.',p:24},
-{t:8,k:'Подсчёт',q:'Сколько элементов в объединении непересекающихся конечных A и B?',a:'|A∪B|=|A|+|B|. Для пересекающихся множеств элементы пересечения нужно вычесть один раз: |A∪B|=|A|+|B|−|A∩B|.',p:25},
-{t:9,k:'Условия',q:'При каких условиях применимо неравенство Бернулли в конспекте?',a:'Для x>−1 и натурального n: (1+x)ⁿ≥1+nx. Условие x>−1 гарантирует положительность 1+x.',p:26},
-{t:9,k:'Доказательство',q:'Как устроен индукционный шаг в доказательстве Бернулли?',a:'Предполагают (1+x)ⁿ≥1+nx и умножают на положительное 1+x. Получают (1+x)ⁿ⁺¹≥(1+nx)(1+x)=1+(n+1)x+nx²≥1+(n+1)x.',p:26},
-{t:9,k:'Формула',q:'Как определить биномиальный коэффициент Cₙᵏ?',a:'Cₙᵏ=n!/[k!(n−k)!] при 0≤k≤n. Он задаёт коэффициент при aⁿ⁻ᵏbᵏ в разложении (a+b)ⁿ.',p:27},
-{t:9,k:'Формула',q:'Запиши формулу Паскаля и объясни её смысл.',a:'Cₙ₊₁ᵏ=Cₙᵏ+Cₙᵏ⁻¹. При умножении разложения (a+b)ⁿ на (a+b) коэффициенты соседних степеней складываются.',p:27},
-{t:9,k:'Проверь себя',q:'Какие крайние коэффициенты в формуле Ньютона?',a:'Cₙ⁰=Cₙⁿ=1, поэтому крайние слагаемые — aⁿ и bⁿ.',p:27},
-{t:10,k:'Определение',q:'Как модуль определяется через знак числа?',a:'|x|=x при x≥0 и |x|=−x при x<0. Геометрически это расстояние от x до нуля.',p:28},
-{t:10,k:'Свойство',q:'Назови основные свойства модуля.',a:'|x|≥0; |x|=0 ⇔ x=0; |xy|=|x||y|; |x+y|≤|x|+|y|; ||x|−|y||≤|x−y|.',p:29},
-{t:10,k:'Метрика',q:'Какие аксиомы выполняет расстояние ρ(x,y)=|x−y|?',a:'Неотрицательность; ρ(x,y)=0 тогда и только тогда, когда x=y; симметрия ρ(x,y)=ρ(y,x); неравенство треугольника ρ(x,z)≤ρ(x,y)+ρ(y,z).',p:29},
-{t:10,k:'Геометрия',q:'Во что превращается окрестность Uᵣ(a) на вещественной прямой?',a:'Uᵣ(a)={x:|x−a|<r}=(a−r,a+r), где r>0. Это открытый интервал с центром a и радиусом r.',p:29},
-{t:10,k:'Геометрия',q:'Как записать замкнутый шар радиуса r на прямой?',a:'{x:|x−a|≤r}=[a−r,a+r]. Открытая окрестность использует строгое неравенство, замкнутый шар включает границы.',p:29},
-{t:11,k:'Эквивалентная формула',q:'Запиши A△B через объединение и пересечение.',a:'A△B=(A∪B)\\(A∩B). В этой разности остаются элементы, которые попали хотя бы в одно множество, но не в оба.',p:31},
-{t:11,k:'Свойство',q:'Что означает включение A△C⊆(A△B)∪(B△C)?',a:'Если принадлежность элемента A и C различается, то она должна различаться либо между A и B, либо между B и C. Это треугольное неравенство для симметрической разности.',p:32},
-{t:11,k:'Лемма',q:'Как ограничить изменение результата при замене одного аргумента?',a:'Например, (A∪B)△(C∪B)⊆A△C. Измениться могут только точки, на которых изменился заменённый аргумент. Аналогичные оценки есть для пересечения и разности.',p:32,active:false},
-{t:11,k:'Длина',q:'Зависит ли длина от того, включены ли концы интервала?',a:'Нет. Интервалы с одинаковыми концами a,b имеют длину b−a независимо от открытости или замкнутости концов. Пустое множество и одноточечный интервал имеют длину 0.',p:33},
-{t:11,k:'Длина',q:'Почему длина конечного объединения непересекающихся интервалов определена корректно?',a:'Два конечных разбиения можно уточнить общим разбиением. Суммы длин после разрезания не меняются, поскольку соседние длины складываются: (b−a)+(c−b)=c−a. Поэтому итог не зависит от выбора разбиения.',p:34},
-{t:11,k:'Определение',q:'Какое множество называется элементарным?',a:'Конечное объединение ограниченных интервалов. Такие множества сохраняют элементарность при конечных объединениях, пересечениях и разностях.',p:34},
-{t:11,k:'Свойство',q:'Сформулируй конечную аддитивность длины.',a:'Если элементарные множества A и B не пересекаются, то |A∪B|=|A|+|B|. Для конечного числа попарно непересекающихся элементарных множеств длина объединения равна сумме длин.',p:36},
-{t:11,k:'Свойство',q:'Что означает монотонность длины?',a:'Если A⊆B и оба множества элементарны, то |A|≤|B|. Интуитивно включение не может увеличить длину меньшего множества относительно большего.',p:36},
-{t:11,k:'Формула',q:'Как выразить длину разности A\\B?',a:'|A\\B|=|A|−|A∩B|. Разбиваем A на непересекающиеся части A\\B и A∩B и применяем аддитивность.',p:37},
-
-{t:4,k:'Пример',q:'Найди sup и inf множества (0,1). Есть ли у него max или min?',a:'sup(0,1)=1, inf(0,1)=0. Максимума и минимума нет, потому что обе граничные точки не входят в интервал.',p:12},
-{t:4,k:'Критерий',q:'Как проверить, что число s — точная верхняя грань A?',a:'Нужно проверить два условия: (1) x≤s для каждого x∈A; (2) для любого ε>0 найдётся x∈A с s−ε<x. Первое делает s верхней гранью, второе — наименьшей из них.',p:12},
-{t:4,k:'Сравнение',q:'Чем полнота ℝ отличается от свойств упорядоченного поля?',a:'Аксиомы упорядоченного поля описывают арифметику и порядок. Полнота добавляет отсутствие «пробелов»: всякое непустое ограниченное сверху множество имеет sup. Например, ℚ — упорядоченное поле, но не полное.',p:11},
-{t:5,k:'Доказательство',q:'Почему ℤ₊(x) само право-индуктивно?',a:'Если y принадлежит пересечению всех право-индуктивных множеств, содержащих x, то y принадлежит каждому из них. Значит, y+1 тоже принадлежит каждому, а потому и их пересечению.',p:16},
-{t:5,k:'Сравнение',q:'Как связаны минимальность ℤ₊(x) и принцип индукции?',a:'Минимальность говорит, что ℤ₊(x) содержится в любом право-индуктивном множестве, содержащем x. При x=1 это даёт обычную индукцию для ℕ: любое множество с 1, замкнутое по шагу +1, содержит все натуральные числа.',p:16},
-{t:6,k:'Свойство',q:'Как единичный шаг помогает найти максимум конечного диапазона целых?',a:'Если целые элементы множества ограничены сверху целым N, то они лежат среди конечного числа чисел …,N−2,N−1,N. Непустая часть такого конечного набора имеет наибольший элемент.',p:18},
-{t:6,k:'Различие',q:'Почему ℕ в этом курсе не содержит ноль?',a:'В конспекте ℕ определяется как {1,2,…} — минимальное право-индуктивное множество, содержащее 1. Поэтому 0 — целое, но не натуральное по принятому здесь соглашению.',p:17},
-{t:6,k:'Доказательство',q:'Как принцип наименьшего контрпримера следует из хорошей упорядоченности ℕ?',a:'Если множество натуральных контрпримеров непусто, у него есть наименьший элемент n. Проверив базу и переход от меньших случаев к n, получаем, что n не может быть контрпримером — противоречие.',p:19},
-{t:8,k:'Доказательство',q:'Как конечность сохраняется при удалении одного элемента?',a:'Если A биективно Dₙ и a∈A, то после удаления a оставшиеся n−1 элементов можно перенумеровать как Dₙ₋₁. Значит, A\{a} конечно и имеет мощность n−1.',p:24},
-{t:8,k:'Свойство',q:'Если A и B конечны, обязательно ли A∪B конечно?',a:'Да. Разбиваем объединение на непересекающиеся части A и B\A. Обе конечны, поэтому объединение конечно; его мощность равна |A|+|B\A|.',p:25},
-{t:8,k:'Различие',q:'Когда формула |A∪B|=|A|+|B| верна без поправки?',a:'Когда A и B не пересекаются. Если пересечение непусто, элементы A∩B посчитаны дважды, поэтому их мощность нужно вычесть один раз.',p:25},
-{t:9,k:'Применение',q:'Как из неравенства Бернулли получить оценку (1+1/n)ⁿ?',a:'Подставь x=1/n и показатель n: (1+1/n)ⁿ≥1+n·(1/n)=2. Условие x>−1 выполнено.',p:26},
-{t:9,k:'Симметрия',q:'Как связаны коэффициенты Cₙᵏ и Cₙⁿ⁻ᵏ?',a:'Они равны: Cₙᵏ=Cₙⁿ⁻ᵏ. Это видно из формулы n!/[k!(n−k)!] — замена k на n−k меняет множители местами.',p:27},
-{t:9,k:'Пример',q:'Разложи (a+b)³ по формуле Ньютона.',a:'(a+b)³=a³+3a²b+3ab²+b³. Коэффициенты 1,3,3,1 — третий ряд треугольника Паскаля.',p:27},
-{t:10,k:'Следствие',q:'Что означает неравенство |x−a|<r в виде двойного неравенства?',a:'a−r<x<a+r. Оно говорит, что x находится от центра a на расстоянии меньше r.',p:29},
-{t:10,k:'Доказательство',q:'Как вывести обратное неравенство ||x|−|y||≤|x−y|?',a:'Из |x|=|(x−y)+y|≤|x−y|+|y| получаем |x|−|y|≤|x−y|. Меняя x и y местами, получаем |y|−|x|≤|x−y|; вместе это и есть требуемая оценка.',p:29},
-{t:10,k:'Свойство',q:'Как выразить расстояние между концами интервала через метрическую функцию?',a:'Длина отрезка [a,b] при a≤b равна ρ(a,b)=|a−b|=b−a. На прямой метрика совпадает с привычным расстоянием.',p:29},
-{t:10,k:'Проверь себя',q:'Какие точки входят в U₂(3)?',a:'U₂(3)={x:|x−3|<2}=(1,5). Точки 1 и 5 не входят, потому что неравенство строгое.',p:29},
-{t:11,k:'Формула',q:'Как разложить B на две непересекающиеся части, если A⊆B?',a:'B=A∪(B\\A), причём A и B\\A не пересекаются. Поэтому |B|=|A|+|B\\A| для элементарных множеств.',p:36}
+  {
+    "t": 1,
+    "k": "Определение",
+    "q": "Что означает A ⊆ B? Когда множества равны?",
+    "a": "A ⊆ B, если каждый элемент A принадлежит B. Равенство A = B эквивалентно двум включениям: A ⊆ B и B ⊆ A.",
+    "p": 2
+  },
+  {
+    "t": 1,
+    "k": "Теорема",
+    "q": "Сформулируй законы де Моргана для семейств множеств.",
+    "a": "Все дополнения берутся в одном универсуме E. Дополнение объединения равно пересечению дополнений: (⋃ᵢ Aᵢ)ᶜ = ⋂ᵢ Aᵢᶜ. Дополнение пересечения равно объединению дополнений: (⋂ᵢ Aᵢ)ᶜ = ⋃ᵢ Aᵢᶜ. Доказательство сводится к отрицанию кванторов принадлежности.",
+    "p": 3
+  },
+  {
+    "t": 1,
+    "k": "Парадокс",
+    "q": "В чём состоит парадокс Рассела?",
+    "a": "Рассмотрим R = {X : X ∉ X}, множество всех множеств, не содержащих себя. Тогда R ∈ R ⇔ R ∉ R — противоречие. Это показывает проблему наивной теории множеств.",
+    "p": 3,
+    "active": false
+  },
+  {
+    "t": 2,
+    "k": "Определение",
+    "q": "Что такое декартово произведение и отношение?",
+    "a": "A × B — множество упорядоченных пар (a,b), где a∈A, b∈B. Отношение между A и B — любое подмножество R ⊆ A × B.",
+    "p": 5,
+    "active": false
+  },
+  {
+    "t": 2,
+    "k": "Определение",
+    "q": "Когда отношение является отображением f:A→B?",
+    "a": "Если каждому a∈A поставлен в соответствие ровно один элемент b∈B. Образ f(A) состоит из значений f(a), а прообраз f⁻¹(C) — из тех a, чьи значения попали в C. Прообраз существует и без обратной функции.",
+    "p": 5
+  },
+  {
+    "t": 2,
+    "k": "Понятие",
+    "q": "Чем инъекция отличается от сюръекции?",
+    "a": "Инъекция: разные элементы области имеют разные образы. Сюръекция: каждый элемент B является образом хотя бы одного a∈A. Биекция одновременно инъективна и сюръективна; у неё есть обратное отображение.",
+    "p": 6
+  },
+  {
+    "t": 3,
+    "k": "Определение",
+    "q": "Назови свойства частичного порядка.",
+    "a": "Рефлексивность: a≤a. Транзитивность: из a≤b и b≤c следует a≤c. Антисимметричность: из a≤b и b≤a следует a=b. Линейный порядок дополнительно сравнивает любую пару элементов.",
+    "p": 8
+  },
+  {
+    "t": 3,
+    "k": "Различие",
+    "q": "Максимальный элемент и наибольший элемент — одно и то же?",
+    "a": "Нет. Наибольший элемент не меньше любого элемента множества. Максимальный элемент лишь не имеет строго большего элемента внутри множества. Например, {{1},{2}} с порядком включения имеет два максимальных элемента, но не имеет наибольшего.",
+    "p": 8
+  },
+  {
+    "t": 3,
+    "k": "Теорема",
+    "q": "Что утверждает лемма Цорна?",
+    "a": "Если в частично упорядоченном непустом множестве P каждая цепь имеет верхнюю грань, принадлежащую P, то существует максимальный элемент. Максимальный элемент не обязательно наибольший. Лемма эквивалентна аксиоме выбора.",
+    "p": 9
+  },
+  {
+    "t": 4,
+    "k": "Определение",
+    "q": "Что значит, что s = sup A?",
+    "a": "s — верхняя грань A, и сколь угодно близко к s снизу найдётся элемент A: для любого ε>0 существует x∈A такой, что s−ε<x≤s. Нужны непустота A и ограниченность сверху.",
+    "p": 12
+  },
+  {
+    "t": 4,
+    "k": "Теорема",
+    "q": "Сформулируй аксиому полноты (непрерывности) ℝ.",
+    "a": "Если X,Y⊆ℝ непусты и каждый x∈X не превосходит каждый y∈Y, то существует c∈ℝ, разделяющий их: x≤c≤y для всех x∈X,y∈Y. Это свойство эквивалентно существованию точной верхней грани у всякого непустого ограниченного сверху множества.",
+    "p": 11
+  },
+  {
+    "t": 4,
+    "k": "Проверь себя",
+    "q": "Почему в теореме о sup важны непустота и ограниченность?",
+    "a": "Пустое множество не задаёт требуемую точную верхнюю грань в стандартной постановке, а неограниченное сверху множество не имеет конечной верхней грани в ℝ. Оба условия необходимы.",
+    "p": 13
+  },
+  {
+    "t": 5,
+    "k": "Определение",
+    "q": "Что значит, что A ⊆ ℝ правоиндуктивно?",
+    "a": "Если x∈A, то x+1∈A. Левоиндуктивность определяется аналогично: x∈A влечёт x−1∈A. Минимальную правоиндуктивную лестницу из x получают пересечением всех правоиндуктивных множеств, содержащих x.",
+    "p": 14
+  },
+  {
+    "t": 5,
+    "k": "Доказательство",
+    "q": "Почему непустое правоиндуктивное A ⊆ ℝ не ограничено сверху?",
+    "a": "Предположим, что s=sup A. Тогда s−1 не верхняя грань, значит найдётся y∈A с y>s−1. По правоиндуктивности y+1∈A, но y+1>s — противоречие.",
+    "p": 15
+  },
+  {
+    "t": 6,
+    "k": "Факт",
+    "q": "Какое соглашение о натуральных числах принято в карточках?",
+    "a": "ℕ = {1,2,3,…}. Между соседними целыми n и n+1 нет целого числа; это свойство дискретности. Не смешивай принятое здесь соглашение с курсами, где 0 включают в ℕ.",
+    "p": 17
+  },
+  {
+    "t": 6,
+    "k": "Теорема",
+    "q": "Что верно о непустом ограниченном подмножестве ℤ?",
+    "a": "Оно имеет наибольший элемент, если ограничено сверху, и наименьший, если ограничено снизу. Также ℤ замкнуто относительно сложения, вычитания и умножения.",
+    "p": 18
+  },
+  {
+    "t": 7,
+    "k": "Определение",
+    "q": "Что такое целая часть [x]?",
+    "a": "[x] = max{n∈ℤ : n≤x}; поэтому [x]≤x<[x]+1. Для любого h>0 единственное целое n удовлетворяет (n−1)h≤x<nh.",
+    "p": 20
+  },
+  {
+    "t": 7,
+    "k": "Теорема",
+    "q": "Сформулируй архимедово свойство ℝ.",
+    "a": "Для любых a>0 и b∈ℝ найдётся n∈ℕ такое, что na>b. Следствие: рациональные числа всюду плотны — между любыми a<b есть рациональное число.",
+    "p": 20
+  },
+  {
+    "t": 7,
+    "k": "Метод",
+    "q": "Как доказывается плотность ℚ в ℝ через архимедово свойство?",
+    "a": "Пусть a<b. Выбрать n∈ℕ с 1/n<b−a и положить m=[na]+1. Тогда na<m≤na+1<nb, поэтому a<m/n<b.",
+    "p": 21
+  },
+  {
+    "t": 7,
+    "k": "Метод",
+    "q": "Что такое сильная индукция?",
+    "a": "Чтобы доказать утверждение для всех n, предполагают его верность для всех меньших значений и выводят случай n. Часто доказательство начинают с наименьшего контрпримера, существование которого противоречит хорошей упорядоченности ℕ.",
+    "p": 21,
+    "active": false
+  },
+  {
+    "t": 8,
+    "k": "Определение",
+    "q": "Когда множество называется конечным?",
+    "a": "Если оно пусто или существует биекция с Dₙ={1,…,n} для некоторого n∈ℕ. Для непустого конечного множества это n называется мощностью; для пустого множества мощность равна 0. Мощность определяется однозначно.",
+    "p": 23
+  },
+  {
+    "t": 8,
+    "k": "Следствие",
+    "q": "Что можно сказать о подмножестве конечного множества?",
+    "a": "Оно конечно, и его мощность не превосходит мощности исходного множества. Объединение конечного числа конечных множеств также конечно.",
+    "p": 24
+  },
+  {
+    "t": 8,
+    "k": "Формула",
+    "q": "Формула мощности объединения двух конечных множеств?",
+    "a": "|A∪B| = |A|+|B|−|A∩B|. Если A и B не пересекаются, то |A∪B|=|A|+|B|.",
+    "p": 25
+  },
+  {
+    "t": 9,
+    "k": "Неравенство",
+    "q": "Сформулируй неравенство Бернулли.",
+    "a": "При вещественном x>−1 и n∈ℕ: (1+x)ⁿ ≥ 1+nx. Равенство имеет место при x=0 или n=1; в остальных случаях неравенство строгое.",
+    "p": 26
+  },
+  {
+    "t": 9,
+    "k": "Формула",
+    "q": "Сформулируй биномиальную формулу Ньютона.",
+    "a": "Для a,b∈ℝ и целого n≥0: (a+b)ⁿ = Σₖ₌₀ⁿ Cₙᵏ aⁿ⁻ᵏbᵏ, где Cₙᵏ=n!/(k!(n−k)!) и 0!=1. При n≥2, 1≤k≤n−1: Cₙᵏ=Cₙ₋₁ᵏ+Cₙ₋₁ᵏ⁻¹; крайние коэффициенты равны 1. Степень с нулевым показателем здесь означает единичный множитель в многочлене; при n=0 обе стороны равны 1.",
+    "p": 27
+  },
+  {
+    "t": 9,
+    "k": "Идея доказательства",
+    "q": "Как доказывают формулу Ньютона индукцией?",
+    "a": "База n=0 или n=1 очевидна. Умножают разложение для n на (a+b), группируют соседние слагаемые и применяют формулу Паскаля, получая коэффициенты для n+1.",
+    "p": 27
+  },
+  {
+    "t": 10,
+    "k": "Определение",
+    "q": "Что такое модуль и расстояние на числовой прямой?",
+    "a": "|x| — расстояние от x до нуля. Расстояние между x и y: ρ(x,y)=|x−y|. Оно неотрицательно, симметрично, равно нулю только при x=y и удовлетворяет неравенству треугольника.",
+    "p": "29–30"
+  },
+  {
+    "t": 10,
+    "k": "Формулы",
+    "q": "Запиши неравенства треугольника и окрестность точки.",
+    "a": "|x+y|≤|x|+|y|; обратное неравенство: ||x|−|y||≤|x−y|. При r>0 окрестность Uᵣ(a)={x:|x−a|<r}=(a−r,a+r).",
+    "p": "29–30"
+  },
+  {
+    "t": 11,
+    "k": "Определение",
+    "q": "Что такое симметрическая разность A△B?",
+    "a": "A△B=(A\\B)∪(B\\A)=(A∪B)\\(A∩B): множество точек, принадлежащих ровно одному из множеств.",
+    "p": 31
+  },
+  {
+    "t": 11,
+    "k": "Оценка",
+    "q": "Как оценивается изменение объединения или пересечения?",
+    "a": "Изменение результата содержится в объединении изменений входов: например, (A∪B)△(C∪D) ⊆ (A△C)∪(B△D). Также A△C ⊆ (A△B)∪(B△C).",
+    "p": 32,
+    "active": false
+  },
+  {
+    "t": 11,
+    "k": "Определение",
+    "q": "Как задаётся длина элементарного множества?",
+    "a": "Элементарное подмножество ℝ представимо конечным объединением попарно непересекающихся ограниченных промежутков; допускаются одноточечные части и пустое множество. Его длина — сумма длин b−a этих частей, не зависящая от разбиения. Длина точки и пустого множества равна 0. Здесь |A| обозначает длину, а не мощность из билета 8.",
+    "p": 36
+  },
+  {
+    "t": 11,
+    "k": "Свойства",
+    "q": "Назови свойства длины элементарных множеств.",
+    "a": "Длина неотрицательна и монотонна; длина объединения непересекающихся множеств равна сумме длин. |A∪B|=|A|+|B|−|A∩B|.",
+    "p": "36–37",
+    "active": false
+  },
+  {
+    "t": 12,
+    "k": "Теорема",
+    "q": "Сформулируй лемму Кантора о вложенных отрезках.",
+    "a": "Если I₁⊇I₂⊇… — непустые замкнутые ограниченные отрезки, то их пересечение непусто. Если длины отрезков стремятся к нулю, пересечение состоит ровно из одной точки.",
+    "p": 39
+  },
+  {
+    "t": 12,
+    "k": "Доказательство",
+    "q": "Как найти общую точку вложенных отрезков?",
+    "a": "Пусть Iₙ=[aₙ,bₙ], и c=sup{aₙ}. Вложенность показывает, что каждый bₙ — верхняя грань всех левых концов, поэтому aₙ≤c≤bₙ для каждого n. Значит, c принадлежит всем отрезкам.",
+    "p": 40
+  },
+  {
+    "t": 12,
+    "k": "Уточнение",
+    "q": "Почему при длинах, стремящихся к нулю, общая точка единственна?",
+    "a": "Если бы общих точек было две, между ними было бы фиксированное расстояние δ>0. Но достаточно поздний отрезок имеет длину меньше δ и не может содержать обе точки.",
+    "p": 40
+  },
+  {
+    "t": 13,
+    "k": "Определение",
+    "q": "Что значит, что множество открыто?",
+    "a": "Множество открыто, если каждая его точка имеет окрестность, целиком лежащую в этом множестве. Дополнение открытого множества называется замкнутым; эквивалентно, множество замкнуто тогда и только тогда, когда его дополнение открыто.",
+    "p": 42
+  },
+  {
+    "t": 13,
+    "k": "Свойства",
+    "q": "Какие объединения и пересечения открытых множеств открыты?",
+    "a": "Произвольное объединение открытых множеств открыто; конечное пересечение открытых множеств открыто. Бесконечное пересечение может не быть открытым: ⋂ₙ(−1/n,1/n)={0}. Для замкнутых множеств действует двойственное правило.",
+    "p": 43
+  },
+  {
+    "t": 13,
+    "k": "Теорема",
+    "q": "Сформулируй теорему Бореля—Лебега.",
+    "a": "Из любого открытого покрытия замкнутого ограниченного отрезка можно выбрать конечное подпокрытие.",
+    "p": 44
+  },
+  {
+    "t": 13,
+    "k": "Идея доказательства",
+    "q": "Как устроено доказательство Бореля—Лебега делением пополам?",
+    "a": "Предположить, что конечного подпокрытия нет. Делить отрезок пополам и каждый раз выбирать половину без конечного подпокрытия. Получить вложенные отрезки с общей точкой c. Элемент покрытия, содержащий c, содержит окрестность c; достаточно короткий выбранный отрезок целиком в ней — противоречие.",
+    "p": 45
+  },
+  {
+    "t": 1,
+    "k": "Термин",
+    "q": "Что такое универсум E в задаче?",
+    "a": "Это множество объектов, которые рассматриваются именно в данной задаче. Например, при решении неравенства на прямой обычно берут E=ℝ. Это не «множество вообще всех объектов».",
+    "p": 2
+  },
+  {
+    "t": 1,
+    "k": "Термин",
+    "q": "Чем отличаются принадлежность и включение?",
+    "a": "a∈A говорит об элементе и множестве. A⊆B сравнивает два множества и означает, что каждый элемент A лежит в B.",
+    "p": 2
+  },
+  {
+    "t": 1,
+    "k": "Определение",
+    "q": "Что такое дополнение множества A?",
+    "a": "Дополнение относительно выбранного универсума E — это E\\A, то есть элементы E, не принадлежащие A. Без универсума понятие дополнения не определено однозначно.",
+    "p": 3
+  },
+  {
+    "t": 1,
+    "k": "Понятие",
+    "q": "Что означает ∪ семейства множеств? А ∩?",
+    "a": "При Xᵢ⊆E и x∈E: x∈⋃ᵢXᵢ тогда и только тогда, когда x принадлежит хотя бы одному Xᵢ. x∈⋂ᵢXᵢ тогда и только тогда, когда x принадлежит каждому Xᵢ.",
+    "p": 3
+  },
+  {
+    "t": 1,
+    "k": "Логика",
+    "q": "Как отрицать утверждения с кванторами ∀ и ∃?",
+    "a": "¬∀x P(x) равносильно ∃x¬P(x). ¬∃x P(x) равносильно ∀x¬P(x). Эта замена лежит в основе доказательства законов де Моргана.",
+    "p": 2
+  },
+  {
+    "t": 1,
+    "k": "Доказательство",
+    "q": "Как доказать равенство двух множеств?",
+    "a": "Пусть x произвольный. Докажи эквивалентность x∈A ⇔ x∈B. Эквивалентный способ — отдельно показать A⊆B и B⊆A.",
+    "p": 2
+  },
+  {
+    "t": 1,
+    "k": "Аксиомы",
+    "q": "Какие операции построения множеств используются?",
+    "a": "Подмножество множества является множеством; все подмножества A образуют множество P(A); можно выделить в множестве элементы с заданным свойством; объединение семейства множеств, являющегося множеством, тоже является множеством.",
+    "p": 2,
+    "active": false
+  },
+  {
+    "t": 1,
+    "k": "Проверь себя",
+    "q": "Если A={1,2,3}, B={3,4}, чему равны A∩B, A∪B и A\\B?",
+    "a": "A∩B={3}; A∪B={1,2,3,4}; A\\B={1,2}. В объединении «или» включающее: элемент может лежать в обоих множествах.",
+    "p": 3
+  },
+  {
+    "t": 1,
+    "k": "Доказательство",
+    "q": "Как доказать первое равенство де Моргана через принадлежность?",
+    "a": "Для любого x∈E: x∉⋃ᵢXᵢ ⇔ x не принадлежит ни одному Xᵢ ⇔ для всех i, x∉Xᵢ ⇔ x∈⋂ᵢ(E\\Xᵢ). Значит, дополнения множеств совпадают.",
+    "p": "3–4"
+  },
+  {
+    "t": 1,
+    "k": "Доказательство",
+    "q": "Как доказать второе равенство де Моргана через принадлежность?",
+    "a": "Для любого x∈E: x∉⋂ᵢXᵢ ⇔ неверно, что x принадлежит каждому Xᵢ ⇔ существует i, для которого x∉Xᵢ ⇔ x∈⋃ᵢ(E\\Xᵢ).",
+    "p": 4
+  },
+  {
+    "t": 2,
+    "k": "Определение",
+    "q": "Когда две упорядоченные пары равны?",
+    "a": "(a,b)=(c,d) тогда и только тогда, когда a=c и b=d. Порядок координат важен.",
+    "p": 5
+  },
+  {
+    "t": 2,
+    "k": "Свойство",
+    "q": "Когда декартово произведение A×B пусто?",
+    "a": "Если хотя бы один множитель пуст, A×B=∅. Если оба множителя непусты, можно выбрать по элементу и получить пару из произведения.",
+    "p": 5,
+    "active": false
+  },
+  {
+    "t": 2,
+    "k": "Термин",
+    "q": "Что такое область определения и множество значений отношения R⊆A×B?",
+    "a": "Область определения — первые координаты пар из R, она содержится в A. Множество значений — вторые координаты, оно содержится в B. Равенство A и области определения или B и значений не обязательно.",
+    "p": 5
+  },
+  {
+    "t": 2,
+    "k": "Различие",
+    "q": "Чем множество значений f(A) отличается от множества, в которое отображает f:A→B?",
+    "a": "B — весь кодомен, объявленный в отображении; f(A) — фактически достигнутые значения, поэтому f(A)⊆B и включение может быть строгим.",
+    "p": 5
+  },
+  {
+    "t": 2,
+    "k": "Определение",
+    "q": "Как определить график отображения f:A→B?",
+    "a": "Γ_f={(a,f(a)):a∈A} — подмножество A×B, состоящее из входа и соответствующего ему выхода.",
+    "p": 5
+  },
+  {
+    "t": 2,
+    "k": "Различие",
+    "q": "Почему f⁻¹(D) не обязательно означает обратное отображение?",
+    "a": "Прообраз D⊆B определён для любого отображения: это {x∈A:f(x)∈D}. Обратная функция существует только у биекции. Прообраз точки может содержать несколько элементов или быть пустым.",
+    "p": "5–6"
+  },
+  {
+    "t": 2,
+    "k": "Пример",
+    "q": "Для f(x)=x² на ℝ найди прообразы {4} и {−1}.",
+    "a": "f⁻¹({4})={−2,2}; f⁻¹({−1})=∅, потому что квадрат действительного числа неотрицателен.",
+    "p": 6
+  },
+  {
+    "t": 2,
+    "k": "Определение",
+    "q": "Что значит, что отображение инъективно?",
+    "a": "Если f(a)=f(a′), то a=a′. Эквивалентно: разные входы имеют разные образы.",
+    "p": 6
+  },
+  {
+    "t": 2,
+    "k": "Определение",
+    "q": "Что значит, что отображение сюръективно?",
+    "a": "f:A→B сюръективно, если для каждого b∈B найдётся a∈A с f(a)=b; то есть f(A)=B.",
+    "p": 6
+  },
+  {
+    "t": 2,
+    "k": "Следствие",
+    "q": "Что верно для обратного отображения биекции?",
+    "a": "Если f:A→B биективно, обратное f⁻¹:B→A тоже биективно, и f⁻¹(f(a))=a, f(f⁻¹(b))=b.",
+    "p": 6
+  },
+  {
+    "t": 2,
+    "k": "Понятие",
+    "q": "Что представляет собой произведение семейства множеств?",
+    "a": "Это множество функций выбора x, заданных на множестве индексов I, для которых x(α)∈Xα для каждого α. Элемент произведения выбирает по одной координате из каждого множества.",
+    "p": 7,
+    "active": false
+  },
+  {
+    "t": 2,
+    "k": "Связь",
+    "q": "Как подмножество I кодируют характеристической функцией?",
+    "a": "Для B⊆I функция χ_B:I→{0,1} равна 1 на B и 0 вне B. Так подмножества I взаимно однозначно соответствуют функциям I→{0,1}.",
+    "p": 7,
+    "active": false
+  },
+  {
+    "t": 3,
+    "k": "Пример",
+    "q": "Почему включение на P({1,2}) задаёт частичный, но не линейный порядок?",
+    "a": "Включение рефлексивно, транзитивно и антисимметрично. Но {1} и {2} несравнимы: ни одно из этих множеств не содержится в другом.",
+    "p": 8,
+    "active": false
+  },
+  {
+    "t": 3,
+    "k": "Определение",
+    "q": "Что значит, что два элемента частичного порядка сравнимы?",
+    "a": "a и b сравнимы, если a≤b или b≤a. Линейный порядок требует сравнимости любых двух элементов.",
+    "p": 8
+  },
+  {
+    "t": 3,
+    "k": "Определение",
+    "q": "Чем минимальный элемент отличается от наименьшего?",
+    "a": "Минимальный элемент не имеет строго меньшего элемента множества. Наименьший элемент не больше каждого элемента множества. В частичном порядке минимальных может быть несколько, а наименьший, если есть, единственен.",
+    "p": 8
+  },
+  {
+    "t": 3,
+    "k": "Определение",
+    "q": "Что такое верхняя грань множества X?",
+    "a": "Элемент u окружающего упорядоченного множества, для которого x≤u при каждом x∈X. Верхняя грань не обязана принадлежать X.",
+    "p": 8
+  },
+  {
+    "t": 3,
+    "k": "Различие",
+    "q": "Чем sup X отличается от максимума X?",
+    "a": "sup X — наименьшая из верхних граней и может не принадлежать X. Максимум — элемент X, который не меньше каждого элемента X; он совпадает с sup X, когда sup X∈X. Например, у (0,1) супремум 1, но максимума нет.",
+    "p": 9
+  },
+  {
+    "t": 3,
+    "k": "Определение",
+    "q": "Что такое цепь в частично упорядоченном множестве?",
+    "a": "Подмножество, на котором любые два элемента сравнимы; иначе говоря, цепь сама линейно упорядочена.",
+    "p": 9
+  },
+  {
+    "t": 3,
+    "k": "Определение",
+    "q": "Что значит, что порядок вполне упорядочен?",
+    "a": "Линейно упорядоченное множество вполне упорядочено, если каждое его непустое подмножество имеет наименьший элемент.",
+    "p": 9
+  },
+  {
+    "t": 3,
+    "k": "Примеры",
+    "q": "Какие из ℕ, ℤ и [0,1] вполне упорядочены обычным порядком?",
+    "a": "ℕ вполне упорядочено. ℤ — нет: у самого ℤ нет наименьшего элемента. [0,1] — нет: подмножество (0,1) не имеет наименьшего элемента.",
+    "p": 9
+  },
+  {
+    "t": 3,
+    "k": "Теорема",
+    "q": "Что утверждает теорема Цермело?",
+    "a": "На любом множестве можно задать линейный порядок, относительно которого множество становится вполне упорядоченным. Она не утверждает, что привычный порядок на ℝ вполне упорядочен.",
+    "p": 9,
+    "active": false
+  },
+  {
+    "t": 3,
+    "k": "Сопоставление",
+    "q": "Сравни принципы Цермело, Куратовского и лемму Цорна.",
+    "a": "Цермело: на множестве есть вполне упорядочение. Куратовский: всякая цепь содержится в максимальной цепи. Цорн: если в непустом частично упорядоченном множестве P всякая цепь имеет верхнюю грань в P, то в P есть максимальный элемент. В теории ZF эти принципы эквивалентны аксиоме выбора.",
+    "p": 9,
+    "active": false
+  },
+  {
+    "t": 3,
+    "k": "Определение",
+    "q": "Что такое аксиома выбора?",
+    "a": "Для любого семейства непустых множеств, индексированного множеством I, существует функция, выбирающая из каждого множества по одному элементу. Эквивалентная формулировка: произведение непустых множителей непусто.",
+    "p": 9
+  },
+  {
+    "t": 4,
+    "k": "Определение",
+    "q": "Какие алгебраические и порядковые свойства имеет ℝ?",
+    "a": "ℝ — упорядоченное поле: сложение, умножение и порядок согласованы с обычными правилами поля и порядковой совместимостью. К этим свойствам добавляется аксиома полноты, отличающая ℝ от ℚ.",
+    "p": 11
+  },
+  {
+    "t": 4,
+    "k": "Формулировка",
+    "q": "В чём принцип непрерывности (разделения) для ℝ?",
+    "a": "Если X,Y⊆ℝ непусты и x≤y для всех x∈X,y∈Y, найдётся c∈ℝ такое, что x≤c≤y для всех x,y. Точка c разделяет два упорядоченных класса.",
+    "p": 11
+  },
+  {
+    "t": 4,
+    "k": "Критерий",
+    "q": "Запиши критерий супремума через ε.",
+    "a": "s=sup X тогда и только тогда, когда s — верхняя грань X и для каждого ε>0 найдётся x∈X с s−ε<x. Значит, к s можно приблизиться снизу сколь угодно близко.",
+    "p": 12
+  },
+  {
+    "t": 4,
+    "k": "Следствие",
+    "q": "Что гарантирует полнота о непустом ограниченном множестве?",
+    "a": "У всякого непустого подмножества ℝ, ограниченного сверху, существует единственный конечный супремум; если оно ограничено снизу, существует единственный конечный инфимум.",
+    "p": 12
+  },
+  {
+    "t": 4,
+    "k": "Пример",
+    "q": "Есть ли максимум у множества {x∈ℝ:0<x<1}? Чему равен sup?",
+    "a": "Максимума нет: 1 не принадлежит множеству, а любой его элемент можно увеличить, оставаясь меньше 1. Супремум равен 1.",
+    "p": 13
+  },
+  {
+    "t": 5,
+    "k": "Примеры",
+    "q": "Приведи примеры право-, лево- и двусторонне-индуктивных множеств.",
+    "a": "[0,+∞) право-индуктивно; (−∞,0] лево-индуктивно; ℤ двусторонне-индуктивно. Пустое множество формально удовлетворяет обоим условиям, поскольку в нём нет элемента, нарушающего импликацию.",
+    "p": 14
+  },
+  {
+    "t": 5,
+    "k": "Свойство",
+    "q": "Что делает с типом индуктивности сдвиг множества?",
+    "a": "Сдвиг x+A сохраняет тип: если A право-индуктивно, то x+A тоже право-индуктивно; аналогично для лево- и двусторонней индуктивности.",
+    "p": 14
+  },
+  {
+    "t": 5,
+    "k": "Свойство",
+    "q": "Как отражение A↦−A меняет индуктивность?",
+    "a": "Отражение меняет правоиндуктивность на левоиндуктивность и наоборот; двусторонняя индуктивность сохраняется.",
+    "p": 14
+  },
+  {
+    "t": 5,
+    "k": "Свойство",
+    "q": "Сохраняют ли объединение и пересечение индуктивность одного типа?",
+    "a": "Да. Объединение и пересечение семейств право-индуктивных подмножеств ℝ право-индуктивны (пустое пересечение берётся относительно ℝ); аналогично для лево- и двусторонней индуктивности.",
+    "p": "14–15"
+  },
+  {
+    "t": 5,
+    "k": "Определение",
+    "q": "Как задают минимальное правоиндуктивное множество, содержащее x?",
+    "a": "ℤ₊(x) — пересечение всех право-индуктивных множеств, содержащих x. Оно само право-индуктивно и содержится в любом другом таком множестве.",
+    "p": 15
+  },
+  {
+    "t": 5,
+    "k": "Свойство",
+    "q": "Сформулируй минимальность ℤ₊(x).",
+    "a": "Если A право-индуктивно и x∈A, то ℤ₊(x)⊆A. Это напрямую следует из определения как пересечения всех подходящих множеств.",
+    "p": 15
+  },
+  {
+    "t": 5,
+    "k": "Теорема",
+    "q": "Как формулируется симметричный результат для левоиндуктивных множеств?",
+    "a": "Непустое левоиндуктивное множество не ограничено снизу. Доказательство зеркально доказательству для правоиндуктивного множества.",
+    "p": 15
+  },
+  {
+    "t": 6,
+    "k": "Определение",
+    "q": "Как связаны натуральные числа и правоиндуктивность?",
+    "a": "ℕ — минимальное право-индуктивное подмножество ℝ, содержащее 1; принято соглашение ℕ={1,2,3,…}.",
+    "p": 17
+  },
+  {
+    "t": 6,
+    "k": "Факт",
+    "q": "Есть ли целое число строго между n и n+1?",
+    "a": "Нет. Соседние целые разделены единичным шагом; это дискретность ℤ.",
+    "p": 18
+  },
+  {
+    "t": 6,
+    "k": "Следствие",
+    "q": "Что даёт ограниченность целочисленного множества сверху?",
+    "a": "Непустое A⊆ℤ, ограниченное сверху, имеет максимум. В частности, для целых чисел конечна возможность подниматься единичными шагами до заданной верхней границы.",
+    "p": 18
+  },
+  {
+    "t": 6,
+    "k": "Доказательство",
+    "q": "Как доказывают существование максимума у ограниченного сверху A⊆ℤ?",
+    "a": "Пусть A⊆ℤ непусто и ограничено сверху, s=sup A. Найдётся m∈A с s−1<m≤s. В полуинтервале (s−1,s] не более одного целого по дискретности ℤ. Если a∈A и a>m, то s−1<a≤s, то есть в этом полуинтервале было бы два разных целых. Поэтому a≤m для всех a∈A, и m=max A.",
+    "p": 18
+  },
+  {
+    "t": 6,
+    "k": "Свойство",
+    "q": "Какие арифметические операции замкнуты на ℤ?",
+    "a": "Сумма, разность и произведение целых чисел снова целые. Это выводится из построения целых через единичные шаги.",
+    "p": 18
+  },
+  {
+    "t": 6,
+    "k": "Принцип",
+    "q": "Как работает доказательство от наименьшего контрпримера?",
+    "a": "Если множество контрпримеров — непустое подмножество ℕ, у него есть наименьший элемент. Затем показывают, что этот контрпример породил бы меньший, либо что он не может быть контрпримером; получается противоречие.",
+    "p": 19
+  },
+  {
+    "t": 7,
+    "k": "Теорема",
+    "q": "Сформулируй принцип Архимеда в форме единичного шага h.",
+    "a": "Для любого x∈ℝ и вещественного h>0 существует единственное n∈ℤ, такое что (n−1)h≤x<nh. Интервалы этой сетки разбивают прямую без пропусков и наложений.",
+    "p": 20
+  },
+  {
+    "t": 7,
+    "k": "Следствие",
+    "q": "Как из формулы целой части получается разложение x на целую и дробную части?",
+    "a": "Существует единственное n=[x]∈ℤ с n≤x<n+1. Поэтому x=[x]+r, где 0≤r<1.",
+    "p": 20
+  },
+  {
+    "t": 7,
+    "k": "Доказательство",
+    "q": "Как доказывают обычную архимедову формулировку na>b?",
+    "a": "Пусть a>0. Предполагают, что {na:n∈ℕ} ограничено сверху, берут его супремум s. По свойству супремума найдётся m с ma>s−a; тогда (m+1)a>s, противоречие. Значит, множество не ограничено сверху.",
+    "p": 20
+  },
+  {
+    "t": 7,
+    "k": "Следствие",
+    "q": "Почему между любыми двумя разными вещественными числами есть рациональное?",
+    "a": "Для a<b выбери n∈ℕ так, чтобы 1/n<b−a. Затем возьми целое m, первое строго большее na. Тогда na<m≤na+1<nb, следовательно, a<m/n<b.",
+    "p": 21,
+    "active": false
+  },
+  {
+    "t": 7,
+    "k": "Следствие",
+    "q": "Почему в любом интервале (a,b) бесконечно много рациональных?",
+    "a": "Пусть a<b. Для любого N∈ℕ выбери n∈ℕ так, чтобы n(b−a)>N+1. Пусть m — наименьшее целое, строго большее na. Тогда na<m≤na+1, и числа m/n,(m+1)/n,…,(m+N)/n различны и лежат в (a,b).",
+    "p": 21
+  },
+  {
+    "t": 7,
+    "k": "Индукция",
+    "q": "Сформулируй математическую индукцию при ℕ={1,2,…}.",
+    "a": "Если A⊆ℕ, 1∈A и из n∈A следует n+1∈A, то A=ℕ. В формулировке для утверждения доказывают базу n=1 и переход n⇒n+1.",
+    "p": 21
+  },
+  {
+    "t": 7,
+    "k": "Индукция",
+    "q": "Почему принцип индукции следует из минимальности ℕ?",
+    "a": "Множество A, содержащее 1 и замкнутое относительно шага n↦n+1, право-индуктивно. По минимальности ℕ оно содержит ℕ; поскольку A⊆ℕ, получаем A=ℕ.",
+    "p": 21
+  },
+  {
+    "t": 7,
+    "k": "Сравнение",
+    "q": "Чем сильная индукция отличается от обычной?",
+    "a": "В сильном переходе для n предполагают утверждение для всех меньших натуральных чисел, а не только для n−1. Метод наименьшего контрпримера часто доказывает именно такую форму.",
+    "p": "21–22"
+  },
+  {
+    "t": 7,
+    "k": "Обобщение",
+    "q": "Что такое трансфинитная индукция?",
+    "a": "Обобщение индукции на вполне упорядоченные множества: чтобы доказать P(α), предполагают P(β) для всех β<α и выводят P(α), проверив начальные случаи.",
+    "p": 22
+  },
+  {
+    "t": 8,
+    "k": "Определение",
+    "q": "Что такое стандартное множество Dₙ?",
+    "a": "Dₙ={1,…,n}; D₀ иногда используют как пустое множество в доказательствах. Конечность означает существование биекции с Dₙ для некоторого целого n≥0, включая D₀=∅.",
+    "p": 23
+  },
+  {
+    "t": 8,
+    "k": "Теорема",
+    "q": "Почему мощность конечного множества определена однозначно?",
+    "a": "Если есть биекции множества с Dₘ и Dₙ, то Dₘ и Dₙ равномощны. Индукцией по меньшему индексу показывают, что это возможно только при m=n.",
+    "p": "23–24"
+  },
+  {
+    "t": 8,
+    "k": "Следствие",
+    "q": "Что верно о конечном подмножестве конечного множества A?",
+    "a": "Подмножество B⊆A конечно и |B|≤|A|. Если B строго меньше A, то |B|<|A|.",
+    "p": 24
+  },
+  {
+    "t": 8,
+    "k": "Теорема",
+    "q": "Почему ограниченное сверху подмножество ℕ конечно?",
+    "a": "Если B⊆ℕ ограничено сверху числом M, то каждый его элемент не больше некоторого натурального N≥M. Следовательно, B⊆{1,…,N}, а подмножество конечного множества конечно.",
+    "p": 24
+  },
+  {
+    "t": 8,
+    "k": "Подсчёт",
+    "q": "Сколько элементов в объединении непересекающихся конечных A и B?",
+    "a": "|A∪B|=|A|+|B|. Для пересекающихся множеств элементы пересечения нужно вычесть один раз: |A∪B|=|A|+|B|−|A∩B|.",
+    "p": 24
+  },
+  {
+    "t": 9,
+    "k": "Условия",
+    "q": "При каких условиях применимо неравенство Бернулли?",
+    "a": "Для вещественного x>−1 и натурального n: (1+x)ⁿ≥1+nx. Условие x>−1 гарантирует положительность 1+x.",
+    "p": 26
+  },
+  {
+    "t": 9,
+    "k": "Доказательство",
+    "q": "Как устроен индукционный шаг в доказательстве Бернулли?",
+    "a": "Предполагают (1+x)ⁿ≥1+nx и умножают на положительное 1+x. Получают (1+x)ⁿ⁺¹≥(1+nx)(1+x)=1+(n+1)x+nx²≥1+(n+1)x.",
+    "p": 26
+  },
+  {
+    "t": 9,
+    "k": "Формула",
+    "q": "Как определить биномиальный коэффициент Cₙᵏ?",
+    "a": "Для целых n≥0 и 0≤k≤n: Cₙᵏ=n!/[k!(n−k)!], где 0!=1. Он задаёт коэффициент при aⁿ⁻ᵏbᵏ в разложении (a+b)ⁿ.",
+    "p": 26
+  },
+  {
+    "t": 9,
+    "k": "Формула",
+    "q": "Запиши формулу Паскаля и объясни её смысл.",
+    "a": "При n≥1 и 1≤k≤n: Cₙ₊₁ᵏ=Cₙᵏ+Cₙᵏ⁻¹; крайние коэффициенты равны 1. При умножении разложения (a+b)ⁿ на (a+b) коэффициенты соседних степеней складываются.",
+    "p": 26
+  },
+  {
+    "t": 9,
+    "k": "Проверь себя",
+    "q": "Какие крайние коэффициенты в формуле Ньютона?",
+    "a": "Cₙ⁰=Cₙⁿ=1, поэтому крайние слагаемые — aⁿ и bⁿ.",
+    "p": 26
+  },
+  {
+    "t": 10,
+    "k": "Определение",
+    "q": "Как модуль определяется через знак числа?",
+    "a": "|x|=x при x≥0 и |x|=−x при x<0. Геометрически это расстояние от x до нуля.",
+    "p": 28
+  },
+  {
+    "t": 10,
+    "k": "Свойство",
+    "q": "Назови основные свойства модуля.",
+    "a": "|x|≥0; |x|=0 ⇔ x=0; |xy|=|x||y|; |x+y|≤|x|+|y|; ||x|−|y||≤|x−y|.",
+    "p": 29
+  },
+  {
+    "t": 10,
+    "k": "Метрика",
+    "q": "Какие аксиомы выполняет расстояние ρ(x,y)=|x−y|?",
+    "a": "Неотрицательность; ρ(x,y)=0 тогда и только тогда, когда x=y; симметрия ρ(x,y)=ρ(y,x); неравенство треугольника ρ(x,z)≤ρ(x,y)+ρ(y,z).",
+    "p": 30
+  },
+  {
+    "t": 10,
+    "k": "Геометрия",
+    "q": "Во что превращается окрестность Uᵣ(a) на вещественной прямой?",
+    "a": "Uᵣ(a)={x:|x−a|<r}=(a−r,a+r), где r>0. Это открытый интервал с центром a и радиусом r.",
+    "p": 30
+  },
+  {
+    "t": 10,
+    "k": "Геометрия",
+    "q": "Как записать замкнутый шар радиуса r≥0 на прямой?",
+    "a": "{x:|x−a|≤r}=[a−r,a+r]. Открытая окрестность использует строгое неравенство, замкнутый шар включает границы.",
+    "p": 30,
+    "note": "Следствие / тренировочный пример по материалу PDF"
+  },
+  {
+    "t": 11,
+    "k": "Эквивалентная формула",
+    "q": "Запиши A△B через объединение и пересечение.",
+    "a": "A△B=(A∪B)\\(A∩B). В этой разности остаются элементы, которые попали хотя бы в одно множество, но не в оба.",
+    "p": 31
+  },
+  {
+    "t": 11,
+    "k": "Свойство",
+    "q": "Что означает включение A△C⊆(A△B)∪(B△C)?",
+    "a": "Если принадлежность элемента A и C различается, то она должна различаться либо между A и B, либо между B и C. Это треугольное неравенство для симметрической разности.",
+    "p": "32–33"
+  },
+  {
+    "t": 11,
+    "k": "Лемма",
+    "q": "Как ограничить изменение результата при замене одного аргумента?",
+    "a": "Например, (A∪B)△(C∪B)⊆A△C. Измениться могут только точки, на которых изменился заменённый аргумент. Аналогичные оценки есть для пересечения и разности.",
+    "p": "31–32",
+    "active": false
+  },
+  {
+    "t": 11,
+    "k": "Длина",
+    "q": "Зависит ли длина от того, включены ли концы интервала?",
+    "a": "Нет. При a<b интервалы с концами a,b имеют длину b−a независимо от открытости или замкнутости концов; при a=b длина равна 0. Пустое множество и одноточечный интервал имеют длину 0.",
+    "p": 33
+  },
+  {
+    "t": 11,
+    "k": "Длина",
+    "q": "Почему длина конечного объединения непересекающихся интервалов определена корректно?",
+    "a": "Два конечных разбиения можно уточнить общим разбиением. Суммы длин после разрезания не меняются, поскольку соседние длины складываются: (b−a)+(c−b)=c−a. Поэтому итог не зависит от выбора разбиения.",
+    "p": 36
+  },
+  {
+    "t": 11,
+    "k": "Определение",
+    "q": "Какое подмножество ℝ называется элементарным?",
+    "a": "Подмножество ℝ, представимое конечным объединением попарно непересекающихся ограниченных промежутков, включая одноточечные части и пустое множество. Произвольное конечное объединение ограниченных промежутков можно привести к такому разбиению. Элементарные множества замкнуты относительно конечных объединений, конечных непустых пересечений и разностей. Пустое пересечение во всей ℝ равно ℝ и не элементарно.",
+    "p": 34
+  },
+  {
+    "t": 11,
+    "k": "Свойство",
+    "q": "Сформулируй конечную аддитивность длины.",
+    "a": "Если элементарные множества A и B не пересекаются, то |A∪B|=|A|+|B|. Для конечного числа попарно непересекающихся элементарных множеств длина объединения равна сумме длин.",
+    "p": "36–37"
+  },
+  {
+    "t": 11,
+    "k": "Свойство",
+    "q": "Что означает монотонность длины?",
+    "a": "Если A⊆B и оба множества элементарны, то |A|≤|B|. Интуитивно включение не может увеличить длину меньшего множества относительно большего.",
+    "p": 37
+  },
+  {
+    "t": 11,
+    "k": "Формула",
+    "q": "Как выразить длину разности A\\B?",
+    "a": "|A\\B|=|A|−|A∩B|. Разбиваем A на непересекающиеся части A\\B и A∩B и применяем аддитивность.",
+    "p": 37,
+    "note": "Следствие / тренировочный пример по материалу PDF"
+  },
+  {
+    "t": 4,
+    "k": "Пример",
+    "q": "Найди sup и inf множества (0,1). Есть ли у него max или min?",
+    "a": "sup(0,1)=1, inf(0,1)=0. Максимума и минимума нет, потому что обе граничные точки не входят в интервал.",
+    "p": 13
+  },
+  {
+    "t": 4,
+    "k": "Критерий",
+    "q": "Как проверить, что число s — точная верхняя грань A?",
+    "a": "Нужно проверить два условия: (1) x≤s для каждого x∈A; (2) для любого ε>0 найдётся x∈A с s−ε<x. Первое делает s верхней гранью, второе — наименьшей из них.",
+    "p": 12
+  },
+  {
+    "t": 4,
+    "k": "Сравнение",
+    "q": "Чем полнота ℝ отличается от свойств упорядоченного поля?",
+    "a": "Аксиомы упорядоченного поля описывают арифметику и порядок. Полнота добавляет отсутствие «пробелов»: всякое непустое ограниченное сверху множество имеет sup. Например, ℚ — упорядоченное поле, но не полное.",
+    "p": 11
+  },
+  {
+    "t": 5,
+    "k": "Доказательство",
+    "q": "Почему ℤ₊(x) само право-индуктивно?",
+    "a": "Если y принадлежит пересечению всех право-индуктивных множеств, содержащих x, то y принадлежит каждому из них. Значит, y+1 тоже принадлежит каждому, а потому и их пересечению.",
+    "p": 15
+  },
+  {
+    "t": 5,
+    "k": "Сравнение",
+    "q": "Как связаны минимальность ℤ₊(x) и принцип индукции?",
+    "a": "Минимальность говорит, что ℤ₊(x) содержится в любом право-индуктивном множестве, содержащем x. При x=1 это даёт обычную индукцию для ℕ: любое множество с 1, замкнутое по шагу +1, содержит все натуральные числа.",
+    "p": "15, 21"
+  },
+  {
+    "t": 6,
+    "k": "Свойство",
+    "q": "Как конечный диапазон помогает найти максимум непустого ограниченного сверху A⊆ℤ?",
+    "a": "Пусть A⊆ℤ непусто и ограничено сверху. Выберем a₀∈A и целую верхнюю грань N. Множество A∩[a₀,N] непусто и конечно, поскольку состоит из целых в конечном диапазоне. Его максимум — также максимум A: остальные элементы A меньше a₀. Это альтернативное доказательство после установления конечности целых диапазонов; основное доказательство билета 6 использует супремум и дискретность.",
+    "p": "18, 24",
+    "note": "Следствие / тренировочный пример по материалу PDF"
+  },
+  {
+    "t": 6,
+    "k": "Различие",
+    "q": "Почему ℕ в этом курсе не содержит ноль?",
+    "a": "В карточках ℕ определяется как {1,2,…} — минимальное право-индуктивное множество, содержащее 1. Поэтому 0 — целое, но не натуральное по принятому здесь соглашению.",
+    "p": 17
+  },
+  {
+    "t": 6,
+    "k": "Доказательство",
+    "q": "Как принцип наименьшего контрпримера следует из хорошей упорядоченности ℕ?",
+    "a": "Если множество натуральных контрпримеров непусто, у него есть наименьший элемент n. Проверив базу и переход от меньших случаев к n, получаем, что n не может быть контрпримером — противоречие.",
+    "p": "19, 21"
+  },
+  {
+    "t": 8,
+    "k": "Доказательство",
+    "q": "Как конечность сохраняется при удалении одного элемента?",
+    "a": "Если A биективно Dₙ и a∈A, то после удаления a оставшиеся n−1 элементов можно перенумеровать как Dₙ₋₁; при n=1 это D₀=∅. Значит, A\\{a} конечно и имеет мощность n−1.",
+    "p": "23–24",
+    "note": "Следствие / тренировочный пример по материалу PDF"
+  },
+  {
+    "t": 8,
+    "k": "Свойство",
+    "q": "Если A и B конечны, обязательно ли A∪B конечно?",
+    "a": "Да. Разбиваем объединение на непересекающиеся части A и B\\A. Обе конечны, поэтому объединение конечно; его мощность равна |A|+|B\\A|.",
+    "p": 24
+  },
+  {
+    "t": 8,
+    "k": "Различие",
+    "q": "Когда формула |A∪B|=|A|+|B| верна без поправки?",
+    "a": "Когда A и B не пересекаются. Если пересечение непусто, элементы A∩B посчитаны дважды, поэтому их мощность нужно вычесть один раз.",
+    "p": 25
+  },
+  {
+    "t": 9,
+    "k": "Применение",
+    "q": "Как из неравенства Бернулли получить оценку (1+1/n)ⁿ?",
+    "a": "Подставь x=1/n и показатель n: (1+1/n)ⁿ≥1+n·(1/n)=2. Условие x>−1 выполнено.",
+    "p": 26,
+    "note": "Следствие / тренировочный пример по материалу PDF"
+  },
+  {
+    "t": 9,
+    "k": "Симметрия",
+    "q": "Как связаны коэффициенты Cₙᵏ и Cₙⁿ⁻ᵏ?",
+    "a": "При целых n≥0, 0≤k≤n они равны: Cₙᵏ=Cₙⁿ⁻ᵏ. Это видно из формулы n!/[k!(n−k)!] — замена k на n−k меняет множители местами.",
+    "p": 26
+  },
+  {
+    "t": 9,
+    "k": "Пример",
+    "q": "Разложи (a+b)³ по формуле Ньютона.",
+    "a": "(a+b)³=a³+3a²b+3ab²+b³. Коэффициенты 1,3,3,1 — третий ряд треугольника Паскаля.",
+    "p": 27,
+    "note": "Следствие / тренировочный пример по материалу PDF"
+  },
+  {
+    "t": 10,
+    "k": "Следствие",
+    "q": "Что означает неравенство |x−a|<r в виде двойного неравенства?",
+    "a": "a−r<x<a+r. Оно говорит, что x находится от центра a на расстоянии меньше r.",
+    "p": 30
+  },
+  {
+    "t": 10,
+    "k": "Доказательство",
+    "q": "Как вывести обратное неравенство ||x|−|y||≤|x−y|?",
+    "a": "Из |x|=|(x−y)+y|≤|x−y|+|y| получаем |x|−|y|≤|x−y|. Меняя x и y местами, получаем |y|−|x|≤|x−y|; вместе это и есть требуемая оценка.",
+    "p": 29
+  },
+  {
+    "t": 10,
+    "k": "Свойство",
+    "q": "Как выразить расстояние между концами интервала через метрическую функцию?",
+    "a": "Длина отрезка [a,b] при a≤b равна ρ(a,b)=|a−b|=b−a. На прямой метрика совпадает с привычным расстоянием.",
+    "p": 33,
+    "note": "Следствие / тренировочный пример по материалу PDF"
+  },
+  {
+    "t": 10,
+    "k": "Проверь себя",
+    "q": "Какие точки входят в U₂(3)?",
+    "a": "U₂(3)={x:|x−3|<2}=(1,5). Точки 1 и 5 не входят, потому что неравенство строгое.",
+    "p": 30,
+    "note": "Следствие / тренировочный пример по материалу PDF"
+  },
+  {
+    "t": 11,
+    "k": "Формула",
+    "q": "Как разложить B на две непересекающиеся части, если A⊆B?",
+    "a": "B=A∪(B\\A), причём A и B\\A не пересекаются. Поэтому |B|=|A|+|B\\A| для элементарных множеств.",
+    "p": 37
+  }
 ].filter(card=>card.t<=11);
-const $=id=>document.getElementById(id), stateKey='matan-colloquium-1-v2';let saved={};try{saved=JSON.parse(localStorage.getItem(stateKey)||'{}');if(!localStorage.getItem(stateKey)){const old=JSON.parse(localStorage.getItem('matan-colloquium-1-v1')||'{}');for(const [id,known] of Object.entries(old))if(known&&Number(id)<31)saved[id]=true}}catch{}let deck=cards.map((_,i)=>i).filter(i=>cards[i].active!==false&&!saved[i]),pos=0,shown=false;
-for(let i=1;i<=11;i++){const o=document.createElement('option');o.value=i;o.textContent=`Билет ${i}`;$('filter').append(o)}
-function updateStats(){const total=cards.filter(card=>card.active!==false).length;const known=Object.keys(saved).filter(k=>saved[k]&&cards[Number(k)]?.active!==false).length;$('knownCount').textContent=known;$('leftCount').textContent=total-known;$('bar').style.width=`${known/total*100}%`;try{localStorage.setItem(stateKey,JSON.stringify(saved))}catch{}}
-function render(){const item=cards[deck[pos]];$('stage').classList.remove('revealed');shown=false;$('flip').textContent='Показать ответ　↵';$('answer').style.display='';if(!item){$('question').textContent='В выбранной подборке карточки закончились.';$('answer').textContent='Выбери другой билет или сбрось прогресс.';$('answer').style.display='block';$('ticket').textContent='Готово';$('kind').textContent='';$('source').textContent='';$('position').textContent='';$('flip').disabled=true;$('again').disabled=true;$('know').disabled=true;updateStats();return}$('flip').disabled=false;$('again').disabled=false;$('know').disabled=false;$('ticket').textContent=`Билет ${item.t}`;$('kind').textContent=item.k;$('question').textContent=item.q;$('answer').textContent=item.a;$('source').textContent=`Конспект · страница ${item.p}`;$('position').textContent=`Карточка ${pos+1} из ${deck.length}`;$('know').textContent='Знаю　✓';updateStats()}
-function move(delta){if(!deck.length)return;pos=(pos+delta+deck.length)%deck.length;render()}function flip(){if(!deck.length)return;shown=!shown;$('stage').classList.toggle('revealed',shown);$('flip').textContent=shown?'Скрыть ответ　↵':'Показать ответ　↵'}
-$('flip').onclick=flip;$('again').onclick=()=>move(1);$('know').onclick=()=>{const id=deck[pos];saved[id]=true;deck.splice(pos,1);if(pos>=deck.length)pos=0;render()};$('filter').onchange=()=>{const v=$('filter').value;deck=cards.map((c,i)=>({c,i})).filter(x=>x.c.active!==false&&(v==='all'||String(x.c.t)===v)).map(x=>x.i).filter(i=>!saved[i]);pos=0;render()};$('reset').onclick=()=>{if(confirm('Сбросить все отметки «Знаю»?')){saved={};$('filter').value='all';deck=cards.map((_,i)=>i).filter(i=>cards[i].active!==false);pos=0;render()}};document.addEventListener('keydown',e=>{if(e.target=== $('filter'))return;if(e.code==='Space'){e.preventDefault();flip()}if(e.key==='ArrowRight')move(1);if(e.key==='ArrowLeft')move(-1)});render();
+const $=id=>document.getElementById(id), stateKey='matan-colloquium-1-v3';
+const valid=new Set(['green','blue','red']);
+let state={cards:{},tickets:{}},deck=[],pos=0,shown=false,examTicket=null,deadline=0,timer=null,examDuration=0;
+function readJSON(key){try{const v=JSON.parse(localStorage.getItem(key)||'null');return v&&typeof v==='object'&&!Array.isArray(v)?v:null}catch{return null}}
+const current=readJSON(stateKey);
+if(current){for(const scope of ['cards','tickets'])for(const [id,rating] of Object.entries(current[scope]||{}))if(valid.has(rating))state[scope][id]=rating}
+else{const old=readJSON('matan-colloquium-1-v2')||readJSON('matan-colloquium-1-v1')||{};for(const [id,known] of Object.entries(old))if(known===true&&cards[id]&&(readJSON('matan-colloquium-1-v2')||Number(id)<31))state.cards[id]='green'}
+const active=cards.map((c,i)=>i).filter(i=>cards[i].active!==false);
+const labels={green:'Знаю',blue:'Повторить',red:'Сложно',none:'Без оценки'};
+function persist(){try{localStorage.setItem(stateKey,JSON.stringify(state));$('storageNotice').textContent=''}catch{$('storageNotice').textContent='Браузер не разрешил сохранение. Оценки работают до закрытия страницы.'}}
+function ratingButtons(scope,id){const group=document.createElement('div');group.className='rating';for(const color of ['green','blue','red','none']){const b=document.createElement('button');b.className=`rate ${color==='none'?'neutral':color}`;b.textContent=color==='none'?'Сбросить':labels[color];b.type='button';b.setAttribute('aria-pressed',String((state[scope][id]||'none')===color));b.onclick=()=>setRating(scope,id,color);group.append(b)}return group}
+function setRating(scope,id,color){if(color==='none')delete state[scope][id];else state[scope][id]=color;persist();updateStats();renderTickets();if(examTicket!==null)renderExamRatings();if(scope==='cards'){const previous=deck[pos];buildDeck(previous)}else renderCardRating()}
+function updateStats(){const known=active.filter(i=>state.cards[i]==='green').length;$('knownCount').textContent=known;$('leftCount').textContent=active.length-known;$('bar').style.width=`${known/active.length*100}%`;$('deckLabel').textContent=`11 билетов · ${active.length} карточка`}
+function renderTickets(){const root=$('tickets');root.replaceChildren();for(let t=1;t<=11;t++){const ids=active.filter(i=>cards[i].t===t),tile=document.createElement('div');tile.className=`ticket-tile ${state.tickets[t]||''}`;const link=document.createElement('button');link.className='ticket-title';link.textContent=`Билет ${t} · ${labels[state.tickets[t]||'none']}`;link.onclick=()=>{finishExam();$('filter').value=String(t);$('ratingFilter').value='all';buildDeck();$('study').scrollIntoView({behavior:'smooth'})};const counts=document.createElement('p');counts.textContent=`Знаю ${ids.filter(i=>state.cards[i]==='green').length} / ${ids.length} · сложно ${ids.filter(i=>state.cards[i]==='red').length}`;tile.append(link,counts,ratingButtons('tickets',t));root.append(tile)}}
+function matches(id){const t=$('filter').value,r=$('ratingFilter').value,c=state.cards[id]||'none';return(t==='all'||String(cards[id].t)===t)&&(r==='all'||(r==='pending'?c!=='green':c===r))}
+function buildDeck(preferred){const oldPos=pos;deck=active.filter(matches);pos=preferred!==undefined&&deck.includes(preferred)?deck.indexOf(preferred):Math.min(oldPos,Math.max(0,deck.length-1));render()}
+function renderCardRating(){$('cardRating').replaceChildren();if(deck.length)$('cardRating').append(ratingButtons('cards',deck[pos]))}
+function render(){const item=cards[deck[pos]];shown=false;$('stage').classList.remove('revealed');$('flip').textContent='Показать ответ';for(const id of ['flip','again','prev'])$(id).disabled=!item;
+if(!item){$('question').textContent='В этой подборке нет вопросов.';$('answer').textContent='';$('ticket').textContent='Готово';$('kind').textContent='';$('source').textContent='Выбери другую оценку или билет.';$('position').textContent=''}else{$('ticket').textContent=`Билет ${item.t}`;$('kind').textContent=item.k;$('question').textContent=item.q;$('answer').textContent=item.a;$('source').textContent=`Конспект · с. ${item.p}${item.note ? " · "+item.note : ""}`;$('position').textContent=`Карточка ${pos+1} из ${deck.length}`};renderCardRating();updateStats()}
+function move(delta){if(deck.length){pos=(pos+delta+deck.length)%deck.length;render()}}
+function flip(){if(deck.length){shown=!shown;$('stage').classList.toggle('revealed',shown);$('flip').textContent=shown?'Скрыть ответ':'Показать ответ'}}
+for(let t=1;t<=11;t++){const o=document.createElement('option');o.value=t;o.textContent=`Билет ${t}`;$('filter').append(o)}
+$('filter').onchange=$('ratingFilter').onchange=()=>{pos=0;buildDeck()};$('flip').onclick=flip;$('again').onclick=()=>move(1);$('prev').onclick=()=>move(-1);
+$('reset').onclick=()=>{if(confirm('Сбросить оценки всех билетов и вопросов?')){state={cards:{},tickets:{}};persist();finishExam();pos=0;buildDeck();renderTickets()}};
+const ticketTopics=['Множества и операции','Декартово произведение и отображения','Упорядоченные множества','Действительные числа и полнота','Индуктивные множества','Целые и натуральные числа','Принцип Архимеда и индукция','Конечные множества','Бернулли и бином Ньютона','Числовая прямая и модуль','Симметрическая разность и длина'];
+function tick(){const left=Math.max(0,Math.ceil((deadline-Date.now())/1000));const clock=`${Math.floor(left/60)}:${String(left%60).padStart(2,'0')}`;$('examStatus').textContent=left?`Билет ${examTicket} · осталось ${clock}`:`Билет ${examTicket} · время вышло. Заверши рассказ, сверь ответы и оцени себя.`;$('examClock').textContent=clock;$('timerBar').style.width=`${Math.min(100,left/(examDuration/1000)*100)}%`;$('timerLabel').textContent=left?'На подготовку':'Время вышло';$('timerCaption').textContent=left?'Расскажи ответы вслух':'Можно сверить ответы';$('examClock').closest('.timer-card').classList.toggle('expired',!left);$('examAlert').hidden=!!left;if(!left){clearInterval(timer);timer=null}}
+function updateExamCount(){if(examTicket===null)return;const ids=active.filter(i=>cards[i].t===examTicket);$('examCount').textContent=`${ids.length} вопросов · оценено ${ids.filter(i=>state.cards[i]).length} из ${ids.length}`}
+function renderExamRatings(){$('examTicketRating').replaceChildren();const text=document.createElement('span');text.textContent='';$('examTicketRating').append(text,ratingButtons('tickets',examTicket));for(const host of $('examQuestions').querySelectorAll('[data-card]'))host.replaceChildren(ratingButtons('cards',host.dataset.card));updateExamCount()}
+function startExam(){const minutes=Number($('minutes').value);if(!Number.isFinite(minutes)||minutes<1||minutes>120){$('minutes').reportValidity();return}clearInterval(timer);const options=Array.from({length:11},(_,i)=>i+1).filter(t=>t!==examTicket);examTicket=options[Math.floor(Math.random()*options.length)];examDuration=minutes*60000;deadline=Date.now()+examDuration;$('examTitle').textContent=`Билет ${examTicket}`;$('examTopic').textContent=ticketTopics[examTicket-1];$('examQuestions').replaceChildren();for(const id of active.filter(i=>cards[i].t===examTicket)){const c=cards[id],li=document.createElement('li'),q=document.createElement('strong'),details=document.createElement('details'),summary=document.createElement('summary'),answer=document.createElement('p'),host=document.createElement('div');const meta=document.createElement('div');meta.className='exam-qmeta';meta.textContent=c.k;q.textContent=c.q;summary.textContent='Сверить ответ';answer.textContent=c.a;details.append(summary,answer);host.dataset.card=id;li.append(meta,q,details,host);$('examQuestions').append(li)}$('examWelcome').hidden=true;$('durationSetup').hidden=true;$('examPanel').classList.add('running');$('study').hidden=true;$('exam').hidden=false;$('endExam').hidden=false;$('startExam').textContent='Другой билет';renderExamRatings();tick();timer=setInterval(tick,500)}
+function finishExam(){clearInterval(timer);timer=null;examTicket=null;$('exam').hidden=true;$('endExam').hidden=true;$('study').hidden=false;$('startExam').textContent='Вытянуть билет ↗';$('examWelcome').hidden=false;$('durationSetup').hidden=false;$('examPanel').classList.remove('running');buildDeck()}
+function syncDuration(){for(const b of document.querySelectorAll('[data-minutes]'))b.setAttribute('aria-pressed',String(b.dataset.minutes===$('minutes').value))}for(const b of document.querySelectorAll('[data-minutes]'))b.onclick=()=>{$('minutes').value=b.dataset.minutes;syncDuration()};$('minutes').oninput=syncDuration;
+$('startExam').onclick=startExam;$('endExam').onclick=finishExam;
+document.addEventListener('keydown',e=>{if(examTicket!==null||e.target.closest('input,select,button,summary,textarea')||e.ctrlKey||e.metaKey||e.altKey)return;if(e.code==='Space'){e.preventDefault();flip()}if(e.key==='ArrowRight')move(1);if(e.key==='ArrowLeft')move(-1);if(deck.length&&['1','2','3'].includes(e.key))setRating('cards',deck[pos],['green','blue','red'][Number(e.key)-1])});
+persist();renderTickets();buildDeck();
+
 </script></body></html>
