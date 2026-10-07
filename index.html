@@ -12,6 +12,23 @@
 .rate.neutral[aria-pressed="true"]{outline:none}.exam-list .rate.neutral{padding:7px 8px;font-size:10px}
 
 .toolbar select{appearance:none;-webkit-appearance:none;padding-right:46px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='m4 6 4 4 4-4' fill='none' stroke='%2370766d' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 18px center;background-size:16px}.toolbar select:focus-visible{outline-width:2px}.wrap{padding-top:max(34px,env(safe-area-inset-top));padding-bottom:max(48px,env(safe-area-inset-bottom))}.toolbar select{max-width:100%}
+/* Soft glass accents; reading surfaces remain opaque. */
+:root{--glass-edge:#fffdf5;--glass-shadow:0 8px 24px #2333240b,inset 0 1px 0 #ffffffeb}
+body{background-color:var(--paper);background-image:radial-gradient(ellipse at 5% 0%,#dfe9df85,transparent 48%),radial-gradient(ellipse at 95% 30%,#eee2cb75,transparent 45%);background-repeat:no-repeat}
+.toolbar{padding:14px;border:1px solid #d5d9ce;border-top-color:var(--glass-edge);border-radius:17px;background:#f9f8f1;box-shadow:var(--glass-shadow)}
+.toolbar select,.toolbar .quiet{background-color:#fffefa9c;border-color:#d2d7cd;box-shadow:inset 0 1px 0 #ffffffd9}
+.timer-card{background:linear-gradient(145deg,#fffefae8,#f7faf1d9);border-color:#d6dece;border-top-color:#fffefa;box-shadow:0 12px 30px #345c4910,inset 0 1px 0 #fff,inset 0 -1px 0 #ffffff80}
+.exam-head{background:radial-gradient(ellipse at 100% 0%,#e0ecdabc,transparent 65%),linear-gradient(120deg,#f8f7ef,#edf2e8)}
+.btn{background-image:linear-gradient(165deg,#ffffff12,transparent 60%);box-shadow:inset 0 1px 0 #ffffff45,0 4px 10px #2333240c;border:1px solid #ffffff16}
+.btn.secondary{background-color:#e5eee6e6;border-color:#ccd9cd;box-shadow:inset 0 1px 0 #ffffffe0,0 4px 12px #23332408}
+.btn:active:not(:disabled){transform:translateY(1px);box-shadow:inset 0 2px 5px #23332418}
+.duration-chip{background:#ffffff73;box-shadow:inset 0 1px 0 #ffffffb3}.duration-chip[aria-pressed="true"]{background:#e5eee6}
+.stage,.exam-list li{background:var(--white);border-top-color:#fff;box-shadow:0 6px 20px #23332407,inset 0 1px 0 #fff}.stage{box-shadow:var(--shadow),inset 0 1px 0 #fff}
+@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.toolbar{background:#fffefaa3;-webkit-backdrop-filter:blur(14px) saturate(115%);backdrop-filter:blur(14px) saturate(115%)}.timer-card{-webkit-backdrop-filter:blur(12px) saturate(110%);backdrop-filter:blur(12px) saturate(110%)}}
+@media(max-width:620px){.toolbar{padding:12px;gap:9px}.toolbar select{width:100%;min-width:0}.toolbar .quiet{margin-left:auto}}
+@media(prefers-reduced-transparency:reduce){.toolbar,.timer-card,.toolbar select,.toolbar .quiet{background:#fffefa;-webkit-backdrop-filter:none;backdrop-filter:none}.btn.secondary{background:var(--mint)}}
+@media(prefers-contrast:more){.toolbar,.timer-card,.stage,.exam-list li,.toolbar select{border-color:var(--muted);background:var(--white)}.notice,.control-label,.exam-count,.exam-question-heading span{color:#454c44}}
+
 </style>
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="icon" type="image/svg+xml" href="icon.svg">
